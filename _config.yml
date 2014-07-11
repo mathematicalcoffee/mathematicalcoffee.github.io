@@ -3,5 +3,7 @@ description: Demonstrating a skeleton build for a blog.
 
 pagination: 5
 
-markdown: redcarpet
+markdown: kramdown
+kramdown:
+    input: GFM
 pygments: true

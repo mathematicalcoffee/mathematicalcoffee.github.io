@@ -21,7 +21,7 @@ http://rsms.me/
 
   <h2 class='date-header'>{{ post.date | date_to_string }}</h2>
   <div class='blog-post'>
-    <h1><a href='{{post.url}}'>{{ post.title }}</a></h1>
+    <h1 class='title'><a href='{{post.url}}'>{{ post.title }}</a></h1>
     {{ post.content }}
     <!-- TODO: posted by <uname> at <time>. Link to comments. like bar. labels. -->
   </div>

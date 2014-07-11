@@ -21,12 +21,13 @@ Here's a sample "posts list".
     - [ ] post archive
     - [ ] popular posts
 - [ ] RMD compiling
-- [ ] Colours from Awesome.inc
+- [x] fix up headings
+- [ ] button styling
+- [x] Colours from Awesome.inc
 - [x] navbar dropdown styling: make sure collapsing it undoes the styling
 - [ ] fix MS gradients on navbar
 - [ ] sidebar styling
-- [ ] style buttons
-- [ ] hosted by github/powered by jekyll/designed with bootstrap/copyright me footer
+- [x] hosted by github/powered by jekyll/designed with bootstrap/copyright me footer
 
 Comments, BASE_PATH for github:
 

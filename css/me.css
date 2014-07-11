@@ -1,9 +1,22 @@
 /* Heavily based off an Awesome, Inc. blogger template */
+/*
+ * White: #ffffff;
+ * light grey: #cccccc; (text colour for dark background)
+ * light blue (blue 1): #8ce1f5
+ * blue 2: #50c0fb
+ * blue 3: #29aae1 (my tab bar and link colour)
+ * blue 4: #1589cd
+ * dark blue (blue 5): #01689c
+ * grey: #2d3037 (bg col)
+ * dark grey: #1b1c21
+ * text colour on white background: #333333 (maybe pick 2d3037)
+ */
 body {
     background-color: #2d3037;
     color: #333333;
 }
 
+.blog-post,
 #content {
     background-color: white;
     border: 1px solid #8ce1f5;
@@ -12,52 +25,9 @@ body {
     -goog-ms-border-radius: 10px;
     border-radius: 10px;
     padding: 0 10px;
+    /* top right bot left */
+    margin: 0 0px 15px 0px;
 }
-
-/* links */
-a:link {
-    color: #29aae1;
-    text-decoration: none;
-}
-a:hover,
-a:visited {
-    color: #01689c;
-    text-decoration: none;
-}
-
-/* headings */
-h1, h2, h3, h4, h5, h6 {
-    color: #29aae1;
-/*    font: normal bold 24px Arial, Tahoma, Helvetica, FreeSans, sans-serif;*/
-    text-shadow: none;
-}
-
-/* page header */
-.page-header {
-    border: none;
-}
-.page-header h1 {
-    color: #8ce1f5;
-}
-.page-header h1 a {
-    color: #8ce1f5;
-    text-decoration: none;
-}
-.page-header h1 small {
-    display:block;
-}
-
-/** TODO UPTO **/
-/* these seem to be h2 18px */
-.date-header {
-    color: #8ce1f5
-}
-/* post-title (h3): 18px
- * gadget-header (sidebar, date heading): #8ce1f5, 18px, h2s in the sidebar...
- * gadget-text (sidebar) #fff
- * gadget-links: #50c0fb, visited #1589cd, hover #8ce1f5
- */
-
 
 /* sidebar */
 #sidebar {
@@ -80,11 +50,75 @@ h1, h2, h3, h4, h5, h6 {
 #sidebar a:hover {
     color: #8ce1f5;
 }
-h2 {
-    font: normal normal 18px Arial, Tahoma, Helvetica, FreeSans, sans-serif;
-    color: #8ce1f5;
+
+/* links */
+a:link {
+    color: #29aae1;
+    text-decoration: none;
+}
+a:hover,
+a:visited {
+    color: #01689c;
+    text-decoration: none;
 }
 
+/* headings */
+h1, h2, h3, h4, h5, h6 {
+    color: #29aae1;
+    text-shadow: none;
+}
+#sidebar h1, #sidebar h2, #sidebar h3, #sidebar h4, #sidebar h5, #sidebar h6,
+.date-header {
+    /* light blue */
+    color: #8ce1f5
+}
+
+/* todo: headings in non-blog-posts? */
+h1, h2, h3, h4, h5, h6 {
+/*#content h1, #content h2, #content h3, #content h4, #content h5, #content h6,
+.blog-post h1, .blog-post h2, .blog-post h3, .blog-post h4, .blog-post h5, .blog-post h6 {*/
+    color: #2d3037;
+}
+
+/* blog/content overall title is styled differently */
+h1.title,
+h1.title a,
+h1.title a:visited {
+    color: #29aee1;
+}
+h1.title a:hover {
+    color: #01689c;
+}
+
+/* page header */
+.page-header {
+    border: none;
+}
+.page-header h1 {
+    color: #8ce1f5;
+}
+.page-header h1 a {
+    color: #8ce1f5;
+    text-decoration: none;
+}
+.page-header h1 small {
+    display:block;
+}
+
+/* footer */
+#footer {
+    font-size: 12px;
+    color: #cccccc;
+    padding: 0 10px;
+}
+
+/** TODO UPTO **/
+/* these seem to be h2 18px */
+/* post-title (h3): 18px
+ * gadget-header (sidebar, date heading): #8ce1f5, 18px, h2s in the sidebar...
+ * gadget-text (sidebar) #fff
+ * gadget-links: #50c0fb, visited #1589cd, hover #8ce1f5
+ */
 
 
 /* navbar styling */

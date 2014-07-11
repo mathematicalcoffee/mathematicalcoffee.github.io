@@ -1,3 +1,15 @@
+<footer role="contentinfo">
+  <div class="container">
+    <div class="col-xs-12">
+      <div id="footer">
+      <!-- TODO: social buttons -->
+        {% capture my_include_footer %}{% include EDIT.footer.text.md %}{% endcapture %}
+        {{ my_include_footer | markdownify }}
+      </div>
+    </div>
+  </div>
+</footer>
+
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -16,4 +28,5 @@ $(document).ready(function() {
 });
 </script>
   </body>
+</div>
 </html>
