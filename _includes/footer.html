@@ -1,0 +1,19 @@
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+// silly thingy to make sure navbar dropdowns lose focus
+// when clicked shut. only noticable if you have a hover
+//  style, I think (or maybe a focus style).
+$(document).ready(function() {
+    /* Stoopid dropdown-close-still-focused fix */
+    $(".dropdown").on("hidden.bs.dropdown", function (e) {
+        $(e.currentTarget).find('a.dropdown-toggle').blur();
+        e.preventDefault();
+        return false;
+    });
+});
+</script>
+  </body>
+</html>

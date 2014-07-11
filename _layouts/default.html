@@ -1,45 +1,21 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>{{ page.title }}</title>
-        <meta name="viewport" content="width=device-width">
+{% include header.html %}
+{% include navbar.html %}
 
-        <!-- syntax highlighting CSS -->
-        <link rel="stylesheet" href="/css/syntax.css">
+<div class="container">
+<div class="row-fluid">
+    <div class="col-sm-9">
+      <div id="content">
+      <h1>{{ page.title }}</h1>
+        {{ content }}
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div id="sidebar">
+        {% capture my_include %}{% include sidebar.md %}{% endcapture %}
+        {{ my_include | markdownify }}
+      </div>
+    </div>
+</div>
+</div>
 
-        <!-- Custom CSS -->
-        <link rel="stylesheet" href="/css/main.css">
-
-    </head>
-    <body>
-
-        <div class="site">
-          <div class="header">
-            <h1 class="title"><a href="/">{{ site.name }}</a></h1>
-            <a class="extra" href="/">home</a>
-          </div>
-
-          {{ content }}
-
-          <div class="footer">
-            <div class="contact">
-              <p>
-                Amy Chan<br />
-                mathemagician and nethacker<br />
-                mathematical.coffee@gmail.com
-              </p>
-            </div>
-            <div class="contact">
-              <p>
-                <a href="https://github.com/mathematicalcoffee">github.com/mathematicalcoffee</a><br />
-                <a href="https://bitbucket.org/mathematicalcoffee">bitbucket.org/mathematicalcoffee</a><br />
-                <a href="http://alt.org/nethack/plr.php?player=coffeebug">Am I playing Nethack?</a><br />
-              </p>
-            </div>
-          </div>
-        </div>
-
-    </body>
-</html>
+{% include footer.html %}
