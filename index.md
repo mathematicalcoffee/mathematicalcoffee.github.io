@@ -26,6 +26,7 @@ Here's a sample "posts list".
 - [ ] fix MS gradients on navbar
 - [ ] sidebar styling
 - [ ] style buttons
+- [ ] hosted by github/powered by jekyll/designed with bootstrap/copyright me footer
 
 Comments, BASE_PATH for github:
 

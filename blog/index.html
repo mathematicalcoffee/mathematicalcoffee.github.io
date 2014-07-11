@@ -1,0 +1,42 @@
+---
+layout: frame
+title: Blog
+full_posts: 5
+---
+<!--
+Don't do a listing, replicate the blog!
+date
+<bubble>
+TODO: match more conventional posts where you put the author too
+http://startbootstrap.com/blog-post
+http://joshualande.com/jekyll-github-pages-poole/
+
+Good EGs with source (http://jekyllrb.com/docs/sites/)
+http://schacon.github.io/
+http://rsms.me/
+-->
+
+{% for post in site.posts %}
+  {% if forloop.index < page.full_posts %}
+
+  <h2 class='date-header'>{{ post.date | date_to_string }}</h2>
+  <div class='blog-post'>
+    <h1><a href='{{post.url}}'>{{ post.title }}</a></h1>
+    {{ post.content }}
+    <!-- TODO: posted by <uname> at <time>. Link to comments. like bar. labels. -->
+  </div>
+  {% else %}
+    {% if forloop.index == page.full_posts %}
+    <!-- post listing -->
+    <h3>Older Posts</h3>
+    <table class='post-list'>
+    {% endif %}
+    <tr>
+      <th><a href='{{ post.url }}'>{{ post.title }}</a></th>
+      <td>{{ post.date | date_to_string }}</td>
+    </tr>
+  {% endif %}
+{% endfor %}
+{% if site.posts | size > page.full_posts %}
+  </table>
+{% endif %}

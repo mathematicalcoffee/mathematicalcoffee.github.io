@@ -1,21 +1,7 @@
-{% include header.html %}
-{% include navbar.html %}
-
-<div class="container">
-<div class="row-fluid">
-    <div class="col-sm-9">
+---
+layout: frame
+---
       <div id="content">
       <h1>{{ page.title }}</h1>
         {{ content }}
       </div>
-    </div>
-    <div class="col-sm-3">
-      <div id="sidebar">
-        {% capture my_include %}{% include sidebar.md %}{% endcapture %}
-        {{ my_include | markdownify }}
-      </div>
-    </div>
-</div>
-</div>
-
-{% include footer.html %}
