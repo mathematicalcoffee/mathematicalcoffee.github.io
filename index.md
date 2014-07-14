@@ -16,7 +16,7 @@ Here's a sample "posts list".
 
 ## To-Do
 
-- [ ] disqus comments
+- [x] disqus comments
 - [ ] sidebar:
     - [ ] post archive
     - [ ] popular posts

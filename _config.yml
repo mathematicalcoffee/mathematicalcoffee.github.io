@@ -1,5 +1,6 @@
 name: mathematical.coffee
 description: Demonstrating a skeleton build for a blog.
+timezone: "Australia/Brisbane"
 
 pagination: 5
 

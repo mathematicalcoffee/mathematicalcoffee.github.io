@@ -24,7 +24,8 @@ body {
     -webkit-border-radius: 10px;
     -goog-ms-border-radius: 10px;
     border-radius: 10px;
-    padding: 0 10px;
+    /* top right&left bot */
+    padding: 0 10px 10px;
     /* top right bot left */
     margin: 0 0px 15px 0px;
 }
@@ -106,6 +107,11 @@ h1.title a:hover {
 }
 
 /* footer */
+.post-footer {
+    padding-top: 10px;
+    border-top: 1px solid #ccc;
+}
+
 #footer {
     font-size: 12px;
     color: #cccccc;
