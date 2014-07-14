@@ -53,13 +53,19 @@ body {
 }
 
 /* links */
+.link {
+    color: #29aae1;
+}
 a:link {
     color: #29aae1;
     text-decoration: none;
 }
-a:hover,
 a:visited {
     color: #01689c;
+    text-decoration: none;
+}
+a:hover {
+    color: #1589cd;
     text-decoration: none;
 }
 

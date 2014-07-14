@@ -27,8 +27,7 @@ http://rsms.me/
     <!-- TODO: posted by <uname> at <time>. Link to comments. like bar. labels. -->
     {% if post.comments %}
     <div class='post-footer'>
-        <!-- TODO: number of comments -->
-        <a href="{{post.url}}#disqus_thread">Comments</a>
+         <span class="glyphicon glyphicon-comment link"></span> <a href="{{post.url}}#disqus_thread">Comments</a>
     </div>
     {% endif %}
   </div>
