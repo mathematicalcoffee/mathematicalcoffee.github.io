@@ -52,6 +52,31 @@ body {
     color: #8ce1f5;
 }
 
+.sidebar-widget {
+}
+
+/* default: right caret
+ * li that is the > of a ul.collapse.in: down caret
+ */
+/* caret down: \f0d7
+ * caret right: \f0da */
+.blog-archive ul.fa-ul {
+    margin-left: 1em;
+}
+.blog-archive a:before {
+    font-family: 'FontAwesome';
+    content: '\f0d7'; /* caret down */
+    margin:0 5px 0 -15px;
+    color: #fff;
+}
+.blog-archive li.blog-archive-post > a:before,
+.blog-archive a.collapsed:before {
+    font-family: 'FontAwesome';
+    content: '\f0da'; /* caret right */
+    margin:0 5px 0 -15px;
+    color: #fff;
+}
+
 /* social */
 .btn-group-social-bar {
 }

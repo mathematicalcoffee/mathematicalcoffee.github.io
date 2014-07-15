@@ -7,10 +7,7 @@
       {{ content }}
     </div>
     <div class="col-sm-3">
-      <div id="sidebar">
-        {% capture my_include %}{% include sidebar.md %}{% endcapture %}
-        {{ my_include | markdownify }}
-      </div>
+      {% include sidebar.html %}
     </div>
 </div>
 </div>

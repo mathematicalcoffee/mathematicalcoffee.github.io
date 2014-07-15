@@ -1,0 +1,47 @@
+<!-- Blog archive, by year then month.
+TODO: styling of chevrons
+Links of years/months
+Open to current blogpost
+It initialises all expanded
+-->
+<div class="sidebar-widget blog-archive">
+<h3>Blog archive</h3>
+<ul class="fa-ul" >
+{% for post in site.posts %}
+  {% capture year %}{{ post.date | date: '%Y' }}{% endcapture %}
+  {% capture month %}{{ post.date | date: '%B' }}{% endcapture %}
+  {% unless post.next %}
+  <li><a data-toggle="collapse" data-target="#collapse{{ year }}">{{ year }}</a>
+    <ul class="fa-ul"  id="collapse{{ year }}" class="panel-collapse collapse in"><!-- TODO: these are searches -->
+      <li><a data-toggle="collapse" data-target="#collapse{{ month }}{{ year }}">{{ month }}</a>
+        <ul class="fa-ul"  id="collapse{{ month }}{{ year }}" class="panel-collapse collapse in">
+  {% else %}
+    {% capture year %}{{ post.date | date: '%Y' }}{% endcapture %}
+    {% capture nyear %}{{ post.next.date | date: '%Y' }}{% endcapture %}
+    {% capture nmonth %}{{ post.next.date | date: '%B' }}{% endcapture %}
+
+
+    {% if year != nyear %}
+        </ul>
+      </li><!-- month -->
+    </ul>
+  </li><!-- year -->
+  <li><a data-toggle="collapse" data-target="#collapse{{ year }}">{{ year }}</a>
+    <ul class="fa-ul"  id="collapse{{ year }}" class="panel-collapse collapse">
+      <li><a data-toggle="collapse" data-target="#collapse{{ month }}{{ year }}">{{ month }}</a>
+        <ul class="fa-ul"  id="collapse{{ month }}{{ year }}" class="panel-collapse collapse">
+    {% elsif month != nmonth %}
+        </ul>
+      </li><!-- month -->
+      <li><a data-toggle="collapse" data-target="#collapse{{ month }}{{ year }}">{{ month }}</a>
+        <ul class="fa-ul"  id="collapse{{ month }}{{ year }}" class="panel-collapse collapse">
+    {% endif %}
+  {% endunless %}
+            <li class="blog-archive-post"><a href="{{ post.url }}">{{ post.title }}</a></li>
+{% endfor %}
+        </ul>
+      </li><!-- month -->
+    </ul>
+  </li><!-- year -->
+</ul>
+</div>
