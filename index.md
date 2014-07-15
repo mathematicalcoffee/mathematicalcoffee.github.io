@@ -16,6 +16,7 @@ Here's a sample "posts list".
 
 ## To-Do
 
+- [ ] use maxcdn or use my own? cdn seems slow but maybe that's my internet
 - [ ] get custom CSS: http://getbootstrap.com/customize/
 - [ ] category vs tag
 - [ ] use modals for popups for social bar
