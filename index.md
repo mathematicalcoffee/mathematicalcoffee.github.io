@@ -39,3 +39,10 @@ Here's a sample "posts list".
 Comments, BASE_PATH for github:
 
 http://jekyllbootstrap.com/usage/blog-configuration.html
+
+```
+git checkout skellington
+git checkout -b myfeaturebranch
+git merge --no-ff myfeaturebranch
+git branch -d myfeaturebranch
+```
