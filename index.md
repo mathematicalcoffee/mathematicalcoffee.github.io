@@ -18,6 +18,7 @@ Here's a sample "posts list".
 
 - [ ] get custom CSS: http://getbootstrap.com/customize/
 - [ ] category vs tag
+- [ ] use modals for popups for social bar
 - [ ] search by tag/category
 - [ ] blog listing is a generic template, use to display search results
 - [ ] use same code for post layout in post page and blog listing page.
