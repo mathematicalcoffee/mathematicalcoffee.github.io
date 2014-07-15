@@ -4,11 +4,20 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- for fb share -->
+    <meta property="og:title" content="{{page.name}}" />
+    <meta property="og:url" content="{{page.url}}" />
+    <!-- TODO: image -->
+    <meta property="og:site_name" content="{{site.name}}" />
+    <meta property="og:description" content="{{page.excerpt}}" />
+
     <title>{{ site.name }}</title>
 
     <!-- Bootstrap -->
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link href="/css/me.css" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

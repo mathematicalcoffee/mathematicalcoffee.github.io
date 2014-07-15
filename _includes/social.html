@@ -1,0 +1,42 @@
+<!-- social bar for POSTS, with share links -->
+<!-- like/+1/follow vs SHARE ? -->
+<div class="btn-group btn-group-xs btn-group-social-bar pull-right">
+  <button type="button" class="btn btn-default disabled">
+    Share:
+  </button>
+  <button type="button" class="btn btn-default btn-social">
+    <a 
+      target="_blank"
+      {% if site.twitter %}
+      href="http://twitter.com/share?url={{page.url | url_param_escape }}&text={{page.title | truncate: 100 | url_param_escape }}&via={{site.twitter}}"
+      {% else %}
+      href="http://twitter.com/share?url={{page.url | url_param_escape }}&text={{page.title | truncate: 100 | url_param_escape}}"
+      {% endif %}
+      title="Tweet This">
+      <span class="fa fa-twitter fa-fw"></span>
+    </a>
+  </button>
+  <button type="button" class="btn btn-default btn-social">
+    <a 
+      target="_blank"
+      href="http://www.facebook.com/share/sharer.php?u={{page.url}}"
+      title="Share on Facebook">
+      <span class="fa fa-facebook fa-fw"><span>
+    </a>
+  </button>
+  <button type="button" class="btn btn-default btn-social">
+    <a target="_blank"
+      href="https://plusone.google.com/_/+1/confirm?hl=en&url=http%3A%2F%2F%20{{page.url | url_param_escape}}"
+      title="Share on Google+">
+      <span class="fa fa-google-plus fa-fw"></span>
+    </a>
+  </button>
+  <button type="button" class="btn btn-default btn-social">
+    <!-- TODO: &media=link_to_first_pic -->
+    <a target="_blank"
+      href="http://www.pinterest.com/pin/create/button/?url={{page.url | url_param_escape}}&description={{page.title | url_param_escape}}"
+      title="Pin this">
+      <span class="fa fa-pinterest fa-fw"></span>
+    </a>
+  </button>
+</div>

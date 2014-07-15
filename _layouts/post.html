@@ -7,8 +7,31 @@ layout: frame
     <h1 class='title'>{{ page.title }}</h1>
     {{ content }}
     <!-- TODO: posted by <uname> at <time>. Link to comments. like bar. labels. -->
-    {% if page.comments %}
-    {% include disqus.html %}
-    {% endif %}
+    <div class='post-footer'>
+        <p>
+    {% include social.html %}
+        {% if page.author %}
+          Posted by {{ page.author }}
+        {% else %}
+          Posted
+        {% endif %}
+        on 
+        {% assign dd = page.date | date: '%A, %d %B %Y at %H:%M' %}
+        {% if dd contains 'at 00:00' %}
+          {{ page.date | date: '%A, %d %B %Y' }}
+        {% else %}
+          {{ dd }}
+        {% endif %}
+        <br />
+        {% if page.categories %}
+        Tags: {{ page.categories | join: ', ' }}<br />
+<!-- TODO: link (search) site.categories.CATEGORY -->
+<!-- TODO: tags vs categories -->
+        {% endif %}
+    </p>
 
+    {% if page.comments %}
+      {% include disqus.html %}
+    {% endif %}
+    </div>
   </div>

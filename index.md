@@ -16,14 +16,18 @@ Here's a sample "posts list".
 
 ## To-Do
 
-- [ ] post footer: likes, poster, ...
+- [ ] get custom CSS: http://getbootstrap.com/customize/
+- [ ] category vs tag
+- [ ] search by tag/category
+- [ ] blog listing is a generic template, use to display search results
+- [ ] use same code for post layout in post page and blog listing page.
+- [x] post footer: likes, poster, ...
 - [x] disqus comments
 - [ ] sidebar:
     - [ ] post archive
     - [ ] popular posts
 - [ ] RMD compiling
 - [x] fix up headings
-- [ ] button styling
 - [x] Colours from Awesome.inc
 - [x] navbar dropdown styling: make sure collapsing it undoes the styling
 - [ ] fix MS gradients on navbar
