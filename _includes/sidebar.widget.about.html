@@ -1,0 +1,35 @@
+<div class="sidebar-widget about">
+  <h3>About {% if site.authors.size > 1 %}Us{% else %}Me{% endif %}</h3>
+
+{% for kv in site.authors %}
+<div class="vcard text-left">
+  {% assign author=kv[1] %}
+  <a href="{%if author.gravatar %}http://www.gravatar.com/{{author.gravatar}}{% else %}#{% endif %}">
+    <img src="http://www.gravatar.com/avatar/{{author.gravatar}}?d=monsterid" alt={{author.nickname}} />
+  </a>
+  <h4>{{author.display_name}}</h4>
+  <p>{% if author.bio %}{{ author.bio }}{% endif %}</p>
+  {% if author.gravatar %}
+  <p><a href="http://www.gravatar.com/{{author.gravatar}}">View my gravatar profile</a></p>
+  {% endif %}
+</div>
+  {% if site.social-aboutme and site.social-aboutme.size > 0 %}
+  <div class="btn-group btn-group-xs btn-group-social-bar">
+    <button type="button" class="btn btn-clear disabled hidden-sm">
+      Find me!
+    </button>
+    {% for key in site.social-aboutme %}{% assign dat=site.data.social[key] %}
+      {% if dat and dat.profile and author[key] %}
+    <button type="button" class="btn btn-clear">
+      <a target="_blank"
+        href="{{ dat.profile | replace: '_USER_', author[key] }}"
+        title="Find me on {{ dat.name }}">
+        <span class="fa {{ dat.icon }} fa-fw"></span>
+      </a>
+    </button>
+      {% endif %}
+    {% endfor %}<!-- social -->
+  </div>
+  {% endif %}
+{% endfor %}<!-- author -->
+</div><!-- about -->

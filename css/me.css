@@ -10,6 +10,7 @@
  * grey: #2d3037 (bg col)
  * dark grey: #1b1c21
  * text colour on white background: #333333 (maybe pick 2d3037)
+ * #60636a  lighten(2d3037, 20%) http://hexcolortool.com/
  */
 body {
     background-color: #2d3037;
@@ -38,7 +39,7 @@ body {
     -webkit-border-radius: 10px;
     -goog-ms-border-radius: 10px;
     border-radius: 10px;
-    padding: 0 5px;
+    padding: 0 10px 10px;
     color: #ffffff
 }
 
@@ -53,6 +54,17 @@ body {
 }
 
 .sidebar-widget {
+    font-size: 13px;
+}
+
+.btn-clear {
+  color: #fff;
+  background-color: transparent;
+  border-color: #60636a; /* lighten(2d3037, 20%) http://hexcolortool.com/ */
+}
+.btn-clear.disabled {
+  background-color: transparent;
+  color: #fff;
 }
 
 /* default: right caret
