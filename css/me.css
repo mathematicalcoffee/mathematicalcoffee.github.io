@@ -65,13 +65,13 @@ body {
 }
 .blog-archive a:before {
     font-family: 'FontAwesome';
-    content: '\f0d7'; /* caret down */
+    content: '\f0da'; /* caret right */
     margin:0 5px 0 -15px;
     color: #fff;
 }
-.blog-archive a.collapsed:before {
+.blog-archive a:not(.collapsed):before {
     font-family: 'FontAwesome';
-    content: '\f0da'; /* caret right */
+    content: '\f0d7'; /* caret down */
     margin:0 5px 0 -15px;
     color: #fff;
 }

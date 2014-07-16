@@ -3,7 +3,7 @@ TODO:
 - [x] styling of chevrons
 - [ ] Links of years/months
 - [ ] Open to current blogpost
-- [ ] It initialises all expanded
+- [x] It initialises all expanded
 - [x] Show number per category
 {% capture cache %}
 {% assign mm=0 %}
@@ -53,20 +53,20 @@ TODO:
     </ul>
   </li><!-- year -->
     {% endunless %}
-  <li><a data-toggle="collapse" data-target="#collapse{{ currentyear }}">{{ currentyear }}</a>
+  <li><a class="collapsed" data-toggle="collapse" data-target="#collapse{{ currentyear }}">{{ currentyear }}</a>
     ({{ ycounts[yy] }}){% assign yy = yy | plus:1 %}
-    <ul class="fa-ul"  id="collapse{{ currentyear }}" class="panel-collapse collapse"><!-- TODO: these are searches -->
-      <li><a data-toggle="collapse" data-target="#collapse{{ currentmonth }}">{{ currentmonth }}</a>
+    <ul class="fa-ul collapse"  id="collapse{{ currentyear }}">
+      <li><a class="collapsed" data-toggle="collapse" data-target="#collapse{{ currentmonth }}{{ currentyear }}">{{ currentmonth }}</a>
         ({{ mcounts[mm] }}){% assign mm = mm | plus:1 %}
-        <ul class="fa-ul"  id="collapse{{ currentmonth }}" class="panel-collapse collapse">
+        <ul class="fa-ul collapse"  id="collapse{{ currentmonth }}{{ currentyear }}">
     {% capture year %}{{currentyear}}{% endcapture %} 
     {% capture month %}{{currentmonth}}{% endcapture %} 
   {% elsif currentmonth != month %}
         </ul>
       </li><!-- month -->
-      <li><a data-toggle="collapse" data-target="#collapse{{ currentmonth }}">{{ currentmonth }}</a>
+      <li><a class="collapsed" data-toggle="collapse" data-target="#collapse{{ currentmonth }}{{ currentyear }}">{{ currentmonth }}</a>
         ({{ mcounts[mm] }}){% assign mm = mm | plus:1 %}
-        <ul class="fa-ul"  id="collapse{{ currentmonth }}" class="panel-collapse collapse">
+        <ul class="fa-ul collapse"  id="collapse{{ currentmonth }}{{ currentyear }}">
   {% endif %}
           <li class="blog-archive-post"><a href="{{ post.url }}">{{ post.title }}</a></li>
     {% capture month %}{{currentmonth}}{% endcapture %} 
