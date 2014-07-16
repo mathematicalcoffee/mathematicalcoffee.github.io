@@ -9,3 +9,10 @@ markdown: kramdown
 kramdown:
     input: GFM
 pygments: true
+
+social:
+    twitter: mathematicoffee
+    googleplus: AmycoffeebugChan
+    github: mathematicalcoffee
+    bitbucket: mathematicalcoffee
+social-post: [twitter, facebook, googleplus, pinterest]
