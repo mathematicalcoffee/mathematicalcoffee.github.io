@@ -1,0 +1,17 @@
+<!-- TODO -->
+<div class="sidebar-widget about">
+<h3>About Me</h3>
+
+{% for kv in site.authors %}
+<div class="author-small text-left">
+  {% assign author=kv[1] %}
+  <a href="{%if author.gravatar %}http://www.gravatar.com/{{author.gravatar}}{% else %}#{% endif %}">
+    <img src="http://www.gravatar.com/avatar/{{author.gravatar}}?d=monsterid" alt={{author.nickname}} />
+  </a>
+  <h4>{{author.display_name}}</h4>
+  <p>{% if author.bio %}{{ author.bio }}{% endif %}</p>
+</div>
+{% endfor %}
+</div><!-- about -->
+
+

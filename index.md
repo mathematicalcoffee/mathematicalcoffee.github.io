@@ -47,3 +47,10 @@ git checkout -b myfeaturebranch
 git merge --no-ff myfeaturebranch
 git branch -d myfeaturebranch
 ```
+
+{% raw %}
+```
+sed -ire 's!\{\{([^ ])!{{ \1!g' `find -name '*.html'`
+sed -ire 's!([^ ])\}\}!\1 }}!g' `find -name '*.html'`
+```
+{% endraw %}

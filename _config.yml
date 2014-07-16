@@ -1,7 +1,18 @@
 name: mathematical.coffee
+# write author: amy on your posts to have it signed.
+authors: 
+    amy:
+        display_name: Amy Chan
+        email: mathematical.coffee@gmail.com
+        gravatar: b5ea0d229d6133caa156292bbe25095f 
+        nickname: mathematical.coffee
+        twitter: "@mathematicoffee"
+        github: mathematicalcoffee
+        bitbucket: mathematicalcoffee
+        web: http://mathematicalcoffee.github.com
+        bio: "I'm a mathematician by trade, programmer by hobby, and enjoy making silly little crochet toys."
 description: Demonstrating a skeleton build for a blog.
 timezone: "Australia/Brisbane"
-twitter: "@mathematicoffee"
 
 pagination: 5
 
