@@ -2,17 +2,20 @@ name: mathematical.coffee
 # write author: amy on your posts to have it signed.
 authors: 
     amy:
-        display_name: Amy Chan
+        display_name: mathematical.coffee
         email: mathematical.coffee@gmail.com
         gravatar: b5ea0d229d6133caa156292bbe25095f 
-        nickname: mathematical.coffee
-        twitter: "@mathematicoffee"
+        bio: Mathematician by training, coder by hobby, <a href="http://www.nethack.org">nethacker</a> for life! I also enjoy making silly little crochet toys.
+        twitter: mathematicoffee
+        googleplus: AmycoffeebugChan
         github: mathematicalcoffee
         bitbucket: mathematicalcoffee
         web: http://mathematicalcoffee.github.com
-        bio: "I'm a mathematician by trade, programmer by hobby, and enjoy making silly little crochet toys."
+        # facebook: pages/PageName  or your username (appended to facebook.com/)
 description: Demonstrating a skeleton build for a blog.
 timezone: "Australia/Brisbane"
+# the twitter for the site (as opposed to indiv. authors)
+twitter: mathematicoffee
 
 pagination: 5
 

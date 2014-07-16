@@ -38,7 +38,7 @@ body {
     -webkit-border-radius: 10px;
     -goog-ms-border-radius: 10px;
     border-radius: 10px;
-    padding: 0 5px;
+    padding: 0 10px 10px;
     color: #ffffff
 }
 
@@ -54,6 +54,16 @@ body {
 
 .sidebar-widget {
     font-size: 13px;
+}
+
+.btn-clear {
+  color: #fff;
+  background-color: transparent;
+  border-color: #29aae1;
+}
+.btn-clear.disabled {
+  background-color: transparent;
+  color: #fff;
 }
 
 /* default: right caret
