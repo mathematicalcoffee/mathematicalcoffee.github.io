@@ -1,5 +1,6 @@
 <!-- social bar for POSTS, with share links -->
 <!-- like/+1/follow vs SHARE ? -->
+{% if site.social-post and site.social-post.size > 0 %}
 <div class="btn-group btn-group-xs btn-group-social-bar pull-right">
   <button type="button" class="btn btn-default disabled">
     Share:
@@ -25,3 +26,4 @@
     {% endif %}
   {% endfor %}
 </div>
+{% endif %}

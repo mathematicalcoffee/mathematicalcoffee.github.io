@@ -10,6 +10,7 @@
  * grey: #2d3037 (bg col)
  * dark grey: #1b1c21
  * text colour on white background: #333333 (maybe pick 2d3037)
+ * #60636a  lighten(2d3037, 20%) http://hexcolortool.com/
  */
 body {
     background-color: #2d3037;
@@ -59,7 +60,7 @@ body {
 .btn-clear {
   color: #fff;
   background-color: transparent;
-  border-color: #29aae1;
+  border-color: #60636a; /* lighten(2d3037, 20%) http://hexcolortool.com/ */
 }
 .btn-clear.disabled {
   background-color: transparent;
