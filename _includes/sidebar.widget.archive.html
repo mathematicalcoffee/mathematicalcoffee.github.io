@@ -1,47 +1,81 @@
 <!-- Blog archive, by year then month.
-TODO: styling of chevrons
-Links of years/months
-Open to current blogpost
-It initialises all expanded
+TODO: 
+- [x] styling of chevrons
+- [ ] Links of years/months
+- [ ] Open to current blogpost
+- [ ] It initialises all expanded
+- [x] Show number per category
+{% capture cache %}
+{% assign mm=0 %}
+{% assign yy=0 %}
+{% assign ycounts="" %}
+{% assign mcounts="" %}
+{% for post in site.posts %}
+  {% capture currentyear %}{{post.date | date: "%Y"}}{% endcapture %}
+  {% capture currentmonth %}{{post.date | date: "%B"}}{% endcapture %}
+  {% if currentyear != year %}
+    {% unless forloop.first %}
+      {% assign mcounts=mcounts | append:'|' | append: mm %}
+      {% assign ycounts=ycounts | append:'|' | append: yy %}
+      {% assign yy=0 %}
+      {% assign mm=0 %}
+    {% endunless %}
+    {% capture year %}{{currentyear}}{% endcapture %} 
+    {% capture month %}{{currentmonth}}{% endcapture %} 
+  {% elsif currentmonth != month %}
+    {% assign mcounts=mcounts | append:'|' | append: mm %}
+    {% assign mm=0 %}
+    {% capture month %}{{currentmonth}}{% endcapture %} 
+  {% endif %}
+  {% assign yy = yy | plus: 1 %}
+  {% assign mm = mm | plus: 1 %}
+  {% if forloop.last %}
+    {% assign mcounts=mcounts | append:'|' | append: mm %}
+    {% assign ycounts=ycounts | append:'|' | append: yy %}
+  {% endif %}
+{% endfor %}
+{% assign mcounts = mcounts | remove_first:'|' | split:'|' %}
+{% assign ycounts = ycounts | remove_first:'|' | split:'|' %}
+{% assign yy=0 %}
+{% assign mm=0 %}
+{% endcapture %}{% assign cache=nil %}
 -->
 <div class="sidebar-widget blog-archive">
 <h3>Blog archive</h3>
 <ul class="fa-ul" >
 {% for post in site.posts %}
-  {% capture year %}{{ post.date | date: '%Y' }}{% endcapture %}
-  {% capture month %}{{ post.date | date: '%B' }}{% endcapture %}
-  {% unless post.next %}
-  <li><a data-toggle="collapse" data-target="#collapse{{ year }}">{{ year }}</a>
-    <ul class="fa-ul"  id="collapse{{ year }}" class="panel-collapse collapse in"><!-- TODO: these are searches -->
-      <li><a data-toggle="collapse" data-target="#collapse{{ month }}{{ year }}">{{ month }}</a>
-        <ul class="fa-ul"  id="collapse{{ month }}{{ year }}" class="panel-collapse collapse in">
-  {% else %}
-    {% capture year %}{{ post.date | date: '%Y' }}{% endcapture %}
-    {% capture nyear %}{{ post.next.date | date: '%Y' }}{% endcapture %}
-    {% capture nmonth %}{{ post.next.date | date: '%B' }}{% endcapture %}
-
-
-    {% if year != nyear %}
+  {% capture currentyear %}{{post.date | date: "%Y"}}{% endcapture %}
+  {% capture currentmonth %}{{post.date | date: "%B"}}{% endcapture %}
+  {% if currentyear != year %}
+    {% unless forloop.first %}
         </ul>
       </li><!-- month -->
     </ul>
   </li><!-- year -->
-  <li><a data-toggle="collapse" data-target="#collapse{{ year }}">{{ year }}</a>
-    <ul class="fa-ul"  id="collapse{{ year }}" class="panel-collapse collapse">
-      <li><a data-toggle="collapse" data-target="#collapse{{ month }}{{ year }}">{{ month }}</a>
-        <ul class="fa-ul"  id="collapse{{ month }}{{ year }}" class="panel-collapse collapse">
-    {% elsif month != nmonth %}
+    {% endunless %}
+  <li><a data-toggle="collapse" data-target="#collapse{{ currentyear }}">{{ currentyear }}</a>
+    ({{ ycounts[yy] }}){% assign yy = yy | plus:1 %}
+    <ul class="fa-ul"  id="collapse{{ currentyear }}" class="panel-collapse collapse"><!-- TODO: these are searches -->
+      <li><a data-toggle="collapse" data-target="#collapse{{ currentmonth }}">{{ currentmonth }}</a>
+        ({{ mcounts[mm] }}){% assign mm = mm | plus:1 %}
+        <ul class="fa-ul"  id="collapse{{ currentmonth }}" class="panel-collapse collapse">
+    {% capture year %}{{currentyear}}{% endcapture %} 
+    {% capture month %}{{currentmonth}}{% endcapture %} 
+  {% elsif currentmonth != month %}
         </ul>
       </li><!-- month -->
-      <li><a data-toggle="collapse" data-target="#collapse{{ month }}{{ year }}">{{ month }}</a>
-        <ul class="fa-ul"  id="collapse{{ month }}{{ year }}" class="panel-collapse collapse">
-    {% endif %}
-  {% endunless %}
-            <li class="blog-archive-post"><a href="{{ post.url }}">{{ post.title }}</a></li>
+      <li><a data-toggle="collapse" data-target="#collapse{{ currentmonth }}">{{ currentmonth }}</a>
+        ({{ mcounts[mm] }}){% assign mm = mm | plus:1 %}
+        <ul class="fa-ul"  id="collapse{{ currentmonth }}" class="panel-collapse collapse">
+  {% endif %}
+          <li class="blog-archive-post"><a href="{{ post.url }}">{{ post.title }}</a></li>
+    {% capture month %}{{currentmonth}}{% endcapture %} 
+  {% if forloop.last %}
+        </ul>
+      </li><!-- month -->
+    </ul>
+  </li><!-- year -->
+</ul><!-- archive -->
+  {% endif %}
 {% endfor %}
-        </ul>
-      </li><!-- month -->
-    </ul>
-  </li><!-- year -->
-</ul>
 </div>

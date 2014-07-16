@@ -69,12 +69,14 @@ body {
     margin:0 5px 0 -15px;
     color: #fff;
 }
-.blog-archive li.blog-archive-post > a:before,
 .blog-archive a.collapsed:before {
     font-family: 'FontAwesome';
     content: '\f0da'; /* caret right */
     margin:0 5px 0 -15px;
     color: #fff;
+}
+.blog-archive li.blog-archive-post > a:before {
+    content: '';
 }
 
 /* social */
