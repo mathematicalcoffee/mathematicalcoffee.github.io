@@ -52,6 +52,43 @@ body {
     color: #8ce1f5;
 }
 
+.sidebar-widget {
+}
+
+/* default: right caret
+ * li that is the > of a ul.collapse.in: down caret
+ */
+/* caret down: \f0d7
+ * caret right: \f0da */
+.blog-archive ul.fa-ul {
+    margin-left: 1.25em;
+}
+.blog-archive a:before {
+    font-family: 'FontAwesome';
+    content: '\f0da'; /* caret right */
+    margin:0 5px 0 -15px;
+    color: #fff;
+}
+.blog-archive a:not(.collapsed):before {
+    font-family: 'FontAwesome';
+    content: '\f0d7'; /* caret down */
+    margin:0 5px 0 -15px;
+    color: #fff;
+}
+.blog-archive li.blog-archive-post > span {
+    color: #50c0fb;
+}
+.blog-archive li.blog-archive-post > span:before {
+    font-family: 'FontAwesome';
+    margin:0 5px 0 -25px;
+    content: '\f101';
+    color: #fff;
+}
+.blog-archive li.blog-archive-post > a:before {
+    content: '';
+    margin:0 5px 0 -15px;
+}
+
 /* social */
 .btn-group-social-bar {
 }

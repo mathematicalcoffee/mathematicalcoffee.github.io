@@ -1,0 +1,86 @@
+<!-- Blog archive, by year then month.
+TODO: 
+- [ ] Links of years/months
+{% capture cache %}
+{% assign mm=0 %}
+{% assign yy=0 %}
+{% assign ycounts="" %}
+{% assign mcounts="" %}
+{% for post in site.posts %}
+  {% capture currentyear %}{{post.date | date: "%Y"}}{% endcapture %}
+  {% capture currentmonth %}{{post.date | date: "%B"}}{% endcapture %}
+  {% if currentyear != year %}
+    {% unless forloop.first %}
+      {% assign mcounts=mcounts | append:'|' | append: mm %}
+      {% assign ycounts=ycounts | append:'|' | append: yy %}
+      {% assign yy=0 %}
+      {% assign mm=0 %}
+    {% endunless %}
+    {% capture year %}{{currentyear}}{% endcapture %} 
+    {% capture month %}{{currentmonth}}{% endcapture %} 
+  {% elsif currentmonth != month %}
+    {% assign mcounts=mcounts | append:'|' | append: mm %}
+    {% assign mm=0 %}
+    {% capture month %}{{currentmonth}}{% endcapture %} 
+  {% endif %}
+  {% assign yy = yy | plus: 1 %}
+  {% assign mm = mm | plus: 1 %}
+  {% if forloop.last %}
+    {% assign mcounts=mcounts | append:'|' | append: mm %}
+    {% assign ycounts=ycounts | append:'|' | append: yy %}
+  {% endif %}
+{% endfor %}
+{% assign mcounts = mcounts | remove_first:'|' | split:'|' %}
+{% assign ycounts = ycounts | remove_first:'|' | split:'|' %}
+{% assign yy=0 %}
+{% assign mm=0 %}
+{% if page.path contains '_posts' %}<!-- page.layout is always 'frame'... -- >
+  {% assign pageyear=page.date | date:"%Y" %}
+  {% assign pagemonth=page.date | date:"%B" %}
+{% endif %}
+{% endcapture %}{% assign cache=nil %}
+-->
+<div class="sidebar-widget blog-archive">
+<h3>Blog archive</h3>
+<ul class="fa-ul" >
+{% for post in site.posts %}
+  {% assign currentyear=post.date | date:"%Y" %}
+  {% assign currentmonth=post.date | date:"%B" %}
+  {% if currentyear != year %}
+    {% unless forloop.first %}
+        </ul>
+      </li><!-- month -->
+    </ul>
+  </li><!-- year -->
+    {% endunless %}
+  <li><a {% if pageyear != currentyear %}class="collapsed"{% endif %} data-toggle="collapse" data-target="#collapse{{ currentyear }}">{{ currentyear }}</a>
+    ({{ ycounts[yy] }}){% assign yy = yy | plus:1 %}
+    <ul class="fa-ul collapse{% if pageyear == currentyear %} in{% endif %}"  id="collapse{{ currentyear }}">
+      <li><a {% if pagemonth != currentmonth %}class="collapsed"{% endif %} data-toggle="collapse" data-target="#collapse{{ currentmonth }}{{ currentyear }}">{{ currentmonth }}</a>
+        ({{ mcounts[mm] }}){% assign mm = mm | plus:1 %}
+        <ul class="fa-ul collapse{% if pagemonth == currentmonth %} in{% endif %}"  id="collapse{{ currentmonth }}{{ currentyear }}">
+    {% assign year=currentyear %}{% assign month=currentmonth %}
+  {% elsif currentmonth != month %}
+        </ul>
+      </li><!-- month -->
+      <li><a {% if pagemonth != currentmonth %}class="collapsed"{% endif %} data-toggle="collapse" data-target="#collapse{{ currentmonth }}{{ currentyear }}">{{ currentmonth }}</a>
+        ({{ mcounts[mm] }}){% assign mm = mm | plus:1 %}
+        <ul class="fa-ul collapse{% if pagemonth == currentmonth %} in{% endif %}"  id="collapse{{ currentmonth }}{{ currentyear }}">
+  {% endif %}
+          <li class="blog-archive-post">
+            {% if page.url == post.url %}
+            <span>{{ post.title }}</span>
+            {% else %}
+            <a href="{{ post.url }}">{{ post.title }}</a>
+            {% endif %}
+          </li>
+    {% capture month %}{{currentmonth}}{% endcapture %} 
+  {% if forloop.last %}
+        </ul>
+      </li><!-- month -->
+    </ul>
+  </li><!-- year -->
+</ul><!-- archive -->
+  {% endif %}
+{% endfor %}
+</div>
