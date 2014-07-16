@@ -32,3 +32,7 @@ bitbucket:
   name: Bitbucket
   profile: https://github.com://bitbucket.org/_USER_
   icon: fa-bitbucket
+email:
+  name: Email
+  profile: 'mailto:_USER_'
+  icon: fa-envelope

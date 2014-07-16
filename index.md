@@ -27,9 +27,13 @@ Here's a sample "posts list".
 - [ ] use same code for post layout in post page and blog listing page.
 - [x] post footer: likes, poster, ...
 - [x] disqus comments
+- [ ] 'follow blog' links (PLUS RSS)
 - [ ] sidebar:
-    - [ ] post archive
+    - [x] post archive
+    - [x] social
+    - [ ] followers
     - [ ] popular posts
+    - [ ] label cloud
 - [ ] RMD compiling
 - [x] fix up headings
 - [x] Colours from Awesome.inc
@@ -37,6 +41,11 @@ Here's a sample "posts list".
 - [ ] fix MS gradients on navbar
 - [ ] sidebar styling
 - [x] hosted by github/powered by jekyll/designed with bootstrap/copyright me footer
+
+## stretch goals
+
+- [ ] try with multiple authors
+- [ ] dropdown on author-social with more social when it doesn't fit on one line.
 
 Comments, BASE_PATH for github:
 

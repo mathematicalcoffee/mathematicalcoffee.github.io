@@ -24,10 +24,7 @@ kramdown:
     input: GFM
 pygments: true
 
-social:
+social: # site accounts as opposed to author accounts (only twitter used for 'share via')
     twitter: mathematicoffee
-    googleplus: AmycoffeebugChan
-    github: mathematicalcoffee
-    bitbucket: mathematicalcoffee
 social-post: [twitter, facebook, googleplus, pinterest]
-social-aboutme: [twitter, facebook, googleplus, github, bitbucket, flickr]
+social-aboutme: [email, twitter, facebook, googleplus, github, bitbucket, flickr]
