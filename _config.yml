@@ -65,5 +65,6 @@ kramdown:
     input: GFM
 pygments: true
 relative_permalinks: false
+permalink: /:year/:month/:day/:title
 
 timezone: "Australia/Brisbane"
