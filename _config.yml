@@ -50,11 +50,10 @@ sidebar:
     cloud:
         # what to make clouds of and in what order? tags, categories.
         what: [tags, categories]
-        # minimum font size for tags? basically tweak-and-see
-        #  (only if no post has this category will the size be attained)
-        minfontsize: 5
+        # minimum font size for tags? Note: it is attained.
+        minfontsize: 13
         # maximum font size for tags? basically tweak-and-see
-        #  (only if every post has this category will the size be attained)
+        # it will never quite be reached.
         maxfontsize: 30
 
 # ------ JEKYLL CONFIGURATION ------ #

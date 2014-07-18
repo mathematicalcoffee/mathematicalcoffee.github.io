@@ -8,9 +8,10 @@
   {% endcapture %} {% assign cache=nil %}
 <div class="sidebar-widget tagcloud">
   {% for type in site.sidebar.cloud.what %}{% if site[type].size > 0 %}
+  {% assign min=nposts %}{% for ps in site[type] %}{% assign num=ps | last | size %}{% if num < min %}{% assign min=num %}{% endif %}{% endfor %}
       <h3>{{ type | capitalize }}</h3>
       <p>{% for cat in site[type] %}
-        <span style="font-size: {{ cat | last | size | divided_by: nposts | times: range | plus: minfont }}px;">{{ cat | first }}</span>
+      <span style="font-size: {{ cat | last | size | minus: min | divided_by: nposts | times: range | plus: minfont }}px;">{{ cat | first }}</span>
       {% endfor %}</p>
   {% endif %}{% endfor %}
 </div><!-- widget -->
