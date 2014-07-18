@@ -18,8 +18,9 @@ new_post_ext    = "md"
 category_dir    = "generated/category"
 tag_dir         = "generated/tag"
 author_dir      = "generated/author"
+dateindex_dir   = "generated/date"
 
-# usage rake new_post[my-new-post] or rake new_post['my new post'] or rake new_post (defaults to "new-post")
+# usage: rake new_post[my-new-post] or rake new_post['my new post'] or rake new_post (defaults to "new-post")
 desc "Begin a new post in #{source_dir}/#{posts_dir}"
 task :new_post, :title do |t, args|
   if args.title
@@ -47,7 +48,7 @@ task :new_post, :title do |t, args|
   end
 end
 
-# usage rake categories to generate category index (category/<category>)
+# usage: rake categories to generate category index (category/<category>)
 desc "Generate category pages into #{source_dir}/#{category_dir}/"
 task :categories do
   raise "### Could not find the source directory." unless File.directory?(source_dir)
@@ -67,15 +68,15 @@ task :categories do
       page.puts "permalink: /category/#{category}/"
       page.puts "---"
       page.puts "<ul>"
-      page.puts "  {% for post in site.categories.#{category} %}"
-      page.puts "    {% include post-short.html %}"
-      page.puts "  {% endfor %}"
+      page.write "  {% for post in site.categories.#{category} %}"
+      page.write "    {% include post-short.html %}"
+      page.write "  {% endfor %}"
       page.puts "</ul>"
     end
   end
 end
 
-# usage rake tags to generate tag index (tag/<tag>)
+# usage: rake tags to generate tag index (tag/<tag>)
 desc "Generate tag pages into #{source_dir}/#{tag_dir}/"
 task :tags do
   raise "### Could not find the source directory." unless File.directory?(source_dir)
@@ -95,15 +96,78 @@ task :tags do
       page.puts "permalink: /tag/#{tag}/"
       page.puts "---"
       page.puts "<ul>"
-      page.puts "  {% for post in site.tags.#{tag} %}"
-      page.puts "    {% include post-short.html %}"
-      page.puts "  {% endfor %}"
+      page.write "  {% for post in site.tags.#{tag} %}"
+      page.write "    {% include post-short.html %}"
+      page.write "  {% endfor %}"
       page.puts "</ul>"
     end
   end
 end
 
-# usage rake authors to generate author index (author/<author>)
+# usage: rake dateindex to generate year/month index.
+desc "Generate year and year/month indices in #{source_dir}/#{dateindex_dir}"
+task :dateindex do
+  raise "### Could not find the source directory." unless File.directory?(source_dir)
+  mkdir_p "#{source_dir}/#{dateindex_dir}"
+  puts "Generating date index pages..."
+
+  options = Jekyll.configuration({})
+  site = Jekyll::Site.new(options)
+  site.read_posts('')
+  h = site.posts.group_by { |p| p.date.year }
+  h = h.merge(h) { | key, val| val.group_by{ |p| p.date.strftime('%m') } }
+  h.each do |year, ppy|
+    mkdir_p "#{source_dir}/#{dateindex_dir}/#{year}"
+    filename="#{source_dir}/#{dateindex_dir}/#{year}.html"
+    puts "Creating page: #{filename}"
+    open(filename, 'w') do |page|
+      page.puts  "---"
+      page.puts  "layout: default"
+      page.puts  "title: Posts for #{year}"
+      page.puts  "permalink: /#{year}/"
+      page.puts  "---"
+      page.puts  "<ul>"
+      page.write "{% for post in site.posts %}"
+      page.write "  {% assign y=post.date | date: '%Y' %}"
+      page.write "    {% if y == '#{year}' %}"
+      page.write "      {% capture currentmonth %}{{post.date | date: '%B'}}{% endcapture %}"
+      page.write "      {% if currentmonth != month %}"
+      page.write "        {% unless forloop.first %}"
+      page.write "  </li></ul>{% endunless %}"
+      page.write "  <li><a href=\"/#{year}/{{ post.date | date: '%m'}}/\">{{ currentmonth }}</a>"
+      page.write "    <ul>"
+      page.write "          {% capture month %}{{currentmonth}}{% endcapture %} "
+      page.write "      {% endif %}"
+      page.write "            {% include post-short.html %}"
+      page.write "    {% endif %}"
+      page.write "{% endfor %}"
+      page.puts  "</ul>"
+    end
+
+    ppy.each do |month, pp|
+      filename="#{source_dir}/#{dateindex_dir}/#{year}/#{month}.html"
+      puts "Creating page: #{filename}"
+      monyear = pp[0].date.strftime('%B %Y')
+      open(filename, 'w') do |page|
+        page.puts "---"
+        page.puts "layout: default"
+        page.puts "title: Posts for #{monyear}"
+        page.puts "permalink: /#{year}/#{month}/"
+        page.puts "---"
+        page.puts "<ul>"
+        page.write "  {% for post in site.posts %}"
+        page.write "    {% assign my=post.date | date: '%B %Y' %}"
+        page.write "      {% if my == '#{monyear}' %}"
+        page.write "        {% include post-short.html %}"
+        page.write "      {% endif %}"
+        page.write "  {% endfor %}"
+        page.puts "</ul>"
+      end
+    end # month
+  end # year
+end
+
+# usage: rake authors to generate author index (author/<author>)
 desc "Generate author pages into #{source_dir}/#{author_dir}/"
 task :authors do
   raise "### Could not find the source directory." unless File.directory?(source_dir)
@@ -122,19 +186,23 @@ task :authors do
       page.puts "title: Posts written by #{author}"
       page.puts "permalink: /author/#{handle}/"
       page.puts "---"
-      page.puts "{% assign c=0 %}"
-      page.puts "{% for post in site.posts %}{% if post.authors and post.authors contains '#{key}' %}{% assign c=c | plus:1 %}{% endif %}{% endfor %}"
-      page.puts "{% if c > 0 %}"
-      page.puts "<p><ul>"
-      page.puts "  {% for post in site.posts %}"
-      page.puts "    {% if post.authors and post.authors contains '#{key}' %}"
-      page.puts "      {% include post-short.html %}"
-      page.puts "    {% endif %}"
-      page.puts "  {% endfor %}"
-      page.puts "</ul></p>"
-      page.puts "{% else %}"
-      page.puts "<p>No posts by this author.</p>"
-      page.puts "{% endif %}"
+      page.write "{% assign c=0 %}"
+      page.write "{% for post in site.posts %}"
+      page.write "  {% if post.authors and post.authors contains '#{key}' %}"
+      page.write "    {% assign c=c | plus:1 %}"
+      page.write "  {% endif %}"
+      page.write "{% endfor %}"
+      page.write "{% if c > 0 %}"
+      page.write "<p><ul>"
+      page.write "  {% for post in site.posts %}"
+      page.write "    {% if post.authors and post.authors contains '#{key}' %}"
+      page.write "      {% include post-short.html %}"
+      page.write "    {% endif %}"
+      page.write "  {% endfor %}"
+      page.write "</ul></p>"
+      page.write "{% else %}"
+      page.write "<p>No posts by this author.</p>"
+      page.write "{% endif %}"
     end
   end
 end
