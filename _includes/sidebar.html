@@ -1,9 +1,6 @@
 <div id="sidebar">
-<!--
-  {% capture my_include %}{% include sidebar.md %}{% endcapture %}
-  {{ my_include | markdownify }}
--->
-  {% include sidebar.widget.archive.html %}
-  {% include sidebar.widget.about.html %}
-  {% include sidebar.widget.tagcloud.html %}
+{% for widget in site.sidebar.widgets %}
+  {% capture path %}sidebar.widget.{{ widget }}.html{% endcapture %}
+  {% include {{path}} %}
+{% endfor %}
 </div>

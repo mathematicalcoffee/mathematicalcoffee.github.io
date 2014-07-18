@@ -16,8 +16,7 @@ Here's a sample "posts list".
 
 ## To-Do
 
-- [ ] sidebar widget configuration in `_config.yml`
-- [ ] make use of | where: and | group_by: filters for years/months
+- [x] sidebar widget configuration in `_config.yml`
 - [ ] remove obscene amounts of whitespace between tags https://github.com/penibelst/jekyll-compress-html
 - [ ] get custom CSS: http://getbootstrap.com/customize/
 - [ ] category vs tag
@@ -28,18 +27,19 @@ Here's a sample "posts list".
 - [x] post footer: likes, poster, ...
 - [x] disqus comments
 - [ ] 'follow blog' links (PLUS RSS)
+- [ ] 'like' per-post links
 - [ ] sidebar:
     - [x] post archive
     - [x] social
     - [ ] followers
     - [ ] popular posts
-    - [ ] label cloud
+    - [x] label cloud
 - [ ] RMD compiling
 - [x] fix up headings
 - [x] Colours from Awesome.inc
 - [x] navbar dropdown styling: make sure collapsing it undoes the styling
 - [ ] fix MS gradients on navbar
-- [ ] sidebar styling
+- [x] sidebar styling
 - [x] hosted by github/powered by jekyll/designed with bootstrap/copyright me footer
 
 ## stretch goals

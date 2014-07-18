@@ -13,10 +13,41 @@ authors:
         web: http://mathematicalcoffee.github.com
         # facebook: pages/PageName  or your username (appended to facebook.com/)
 description: Demonstrating a skeleton build for a blog.
-timezone: "Australia/Brisbane"
-# the twitter for the site (as opposed to indiv. authors)
-twitter: mathematicoffee
 
+# ------ SITE CONFIGURATION ------ #
+social: # site accounts as opposed to author accounts (only twitter used for 'share via')
+    twitter: mathematicoffee
+
+# for each post, what social share widgets do you want? (see _data/social.yml, needs
+# 'share' entry)
+social-post: [twitter, facebook, googleplus, pinterest]
+
+# What to put into the right-hand sidebar.
+sidebar:
+    # available widgets: about, archive, cloud
+    # they appear in the order you list.
+    widgets: [archive, about, cloud]
+    # --- configuration of widgets ---
+    # aboutme sidebar widget configuration
+    aboutme:
+        # for each author, what shall we show on the social bar (in this order)?
+        # choose from _social/data.yml (and add the nickname into authors)
+        social: [email, twitter, facebook, googleplus, github, bitbucket, flickr]
+    # archive sidebar widget configuration
+    archive:
+        # has no options.
+    # cloud sidebar widget configuration.
+    cloud:
+        # what to make clouds of and in what order? tags, categories.
+        what: [tags, categories]
+        # minimum font size for tags? basically tweak-and-see
+        #  (only if no post has this category will the size be attained)
+        minfontsize: 5
+        # maximum font size for tags? basically tweak-and-see
+        #  (only if every post has this category will the size be attained)
+        maxfontsize: 30
+
+# ------ JEKYLL CONFIGURATION ------ #
 pagination: 5
 
 markdown: kramdown
@@ -24,10 +55,4 @@ kramdown:
     input: GFM
 pygments: true
 
-sidebar:
-    cloud: [tags, categories]
-
-social: # site accounts as opposed to author accounts (only twitter used for 'share via')
-    twitter: mathematicoffee
-social-post: [twitter, facebook, googleplus, pinterest]
-social-aboutme: [email, twitter, facebook, googleplus, github, bitbucket, flickr]
+timezone: "Australia/Brisbane"

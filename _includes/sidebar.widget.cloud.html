@@ -1,14 +1,13 @@
 <!-- TODO: tags are links -->
-{% if site.sidebar.cloud and site.sidebar.cloud.size > 0 %}
+{% if site.sidebar.widgets contains 'cloud' and site.sidebar.cloud.what.size > 0 %}
   {% capture cache %}
 <!-- font size = min + (max-min)*percentage of posts (px) -->
-  {% assign minfont=5 %}
-  {% assign maxfont=40 %}
-  {% assign range=maxfont | minus: minfont %}
+  {% assign minfont=site.sidebar.cloud.minfontsize %}
+  {% assign range=site.sidebar.cloud.maxfontsize | minus: minfont %}
   {% assign nposts=site.posts.size | plus: 0.0 %} <!-- convert to float -->
   {% endcapture %} {% assign cache=nil %}
 <div class="sidebar-widget tagcloud">
-  {% for type in site.sidebar.cloud %}{% if site[type].size > 0 %}
+  {% for type in site.sidebar.cloud.what %}{% if site[type].size > 0 %}
       <h3>{{ type | capitalize }}</h3>
       <p>{% for cat in site[type] %}
         <span style="font-size: {{ cat | last | size | divided_by: nposts | times: range | plus: minfont }}px;">{{ cat | first }}</span>

@@ -1,3 +1,4 @@
+{% if site.sidebar.widgets contains 'about' %}
 <div class="sidebar-widget about">
   <h3>About {% if site.authors.size > 1 %}Us{% else %}Me{% endif %}</h3>
 
@@ -13,12 +14,12 @@
   <p><a href="http://www.gravatar.com/{{author.gravatar}}">View my gravatar profile</a></p>
   {% endif %}
 </div>
-  {% if site.social-aboutme and site.social-aboutme.size > 0 %}
+  {% if site.widgets.about.social and site.widgets.about.social.size > 0 %}
   <div class="btn-group btn-group-xs btn-group-social-bar">
     <button type="button" class="btn btn-clear disabled hidden-sm">
       Find me!
     </button>
-    {% for key in site.social-aboutme %}{% assign dat=site.data.social[key] %}
+    {% for key in site.widgets.about.social %}{% assign dat=site.data.social[key] %}
       {% if dat and dat.profile and author[key] %}
     <button type="button" class="btn btn-clear">
       <a target="_blank"
@@ -33,3 +34,4 @@
   {% endif %}
 {% endfor %}<!-- author -->
 </div><!-- about -->
+{% endif %}

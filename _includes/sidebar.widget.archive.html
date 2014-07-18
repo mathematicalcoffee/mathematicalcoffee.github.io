@@ -40,6 +40,7 @@ TODO:
 {% endif %}
 {% endcapture %}{% assign cache=nil %}
 -->
+{% if site.sidebar.widgets contains 'archive' %}
 <div class="sidebar-widget blog-archive">
 <h3>Blog archive</h3>
 <ul class="fa-ul" >
@@ -84,3 +85,4 @@ TODO:
   {% endif %}
 {% endfor %}
 </div>
+{% endif %}
