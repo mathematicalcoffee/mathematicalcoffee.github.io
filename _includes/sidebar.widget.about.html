@@ -13,7 +13,6 @@
   {% if author.gravatar %}
   <p><a href="http://www.gravatar.com/{{author.gravatar}}">View my gravatar profile</a></p>
   {% endif %}
-</div>
   {% if site.sidebar.about.social and site.sidebar.about.social.size > 0 %}
   <div class="btn-group btn-group-xs btn-group-social-bar">
     <button type="button" class="btn btn-clear disabled hidden-sm">
@@ -32,6 +31,7 @@
     {% endfor %}<!-- social -->
   </div>
   {% endif %}
+</div>
 {% endfor %}<!-- author -->
 </div><!-- about -->
 {% endif %}

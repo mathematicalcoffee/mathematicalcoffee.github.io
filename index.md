@@ -3,7 +3,6 @@ layout: default
 title: Hello World!
 tagline: Supporting tagline
 ---
-
 doop-di-doop-di-doo.
 
 Here's a sample "posts list".

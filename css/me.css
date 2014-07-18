@@ -67,6 +67,10 @@ body {
   color: #fff;
 }
 
+.sidebar-widget.about .vcard {
+  margin-top: 1em;
+}
+
 /* default: right caret
  * li that is the > of a ul.collapse.in: down caret
  */

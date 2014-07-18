@@ -1,0 +1,5 @@
+<author>
+    <name>{{ author.display_name | xml_escape }}</name>
+    {% if author.email %}<email>{{ author.email | xml_escape }}</email>{% endif %}
+    {% if author.web %}<uri>{{ author.web | xml_escape }}</uri>{% endif %}
+</author>

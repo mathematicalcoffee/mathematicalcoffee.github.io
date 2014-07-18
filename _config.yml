@@ -1,5 +1,6 @@
 name: mathematical.coffee
 # write author: amy on your posts to have it signed.
+url: http://mathematicalcoffee.github.com
 authors: 
     amy:
         display_name: mathematical.coffee
@@ -11,7 +12,16 @@ authors:
         github: mathematicalcoffee
         bitbucket: mathematicalcoffee
         web: http://mathematicalcoffee.github.com
-        # facebook: pages/PageName  or your username (appended to facebook.com/)
+    john:
+        display_name: John Smith
+        email: john.smith@email.com
+        gravatar: 12345
+        bio: Your modern mystery man.
+        # see _data/social.yml.
+        # bitbucket, email, facebook, flickr, github, googleplus, pinterest, twitter
+        twitter: twitter
+        # not yet used
+        # web: http://johndoe.com
 description: Demonstrating a skeleton build for a blog.
 
 # ------ SITE CONFIGURATION ------ #
