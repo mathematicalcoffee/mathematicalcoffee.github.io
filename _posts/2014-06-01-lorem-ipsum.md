@@ -3,6 +3,8 @@ layout: post
 title:  "Lorem Ipsum"
 date:   2014-06-01 21:41
 categories: lorem
+authors: [amy]
+comments: true
 ---
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tempus imperdiet ante, ut euismod mi posuere eu. Nullam neque purus, vehicula vel faucibus sed, mattis accumsan massa. Sed elementum ligula vel convallis pretium. Sed sit amet orci urna. Sed ullamcorper, felis nec aliquet condimentum, tortor metus fringilla sapien, vel vehicula dui neque ut orci. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec sed dui id velit dapibus pharetra sit amet quis dolor. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer eu ipsum ut purus commodo elementum. Duis vestibulum semper malesuada. Nulla ac semper turpis, in porttitor nisl. Phasellus vehicula sem sed nulla suscipit fringilla. Phasellus erat velit, facilisis eu dui in, dignissim condimentum nulla. Nullam gravida lacus nisl.

@@ -41,6 +41,7 @@ Here's a sample "posts list".
 - [ ] fix MS gradients on navbar
 - [x] sidebar styling
 - [x] hosted by github/powered by jekyll/designed with bootstrap/copyright me footer
+- [ ] clicking on author name in posts SEARCHES for authors who have written those posts
 
 ## stretch goals
 
