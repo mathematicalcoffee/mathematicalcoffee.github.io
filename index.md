@@ -9,7 +9,7 @@ Here's a sample "posts list".
 
 <ul class="posts">
   {% for post in site.posts %}
-    <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a></li>
+    {% include post-short.html %}
   {% endfor %}
 </ul>
 
@@ -39,11 +39,11 @@ Here's a sample "posts list".
 - [x] sidebar styling
 - [x] hosted by github/powered by jekyll/designed with bootstrap/copyright me footer
 - [ ] searching:
-    - [ ] tags (/search/tag/<tag>): tag cloud or list at the end of the post
-    - [ ] categories (/search/category/<category>): category cloud or list at the end of the post
-    - [ ] author (/search/author/<author>): click author name, also about page, maybe sidebar
-    - [ ] text search (?) (/search/<text>): from blog archive widget (?)
-    - [ ] date search (?) (/search/{date,month}/<date,month>): from blog archive widget (?)
+    - [ ] tags (/tag/{tag}): tag cloud or list at the end of the post
+    - [ ] categories (/category/{category}): category cloud or list at the end of the post
+    - [ ] author (/author/{author}): click author name, also about page, maybe sidebar
+    - [ ] text search (?) (/search/{text}): from blog archive widget (?)
+    - [ ] date search (?) (/year/{year}, /month/{month}): from blog archive widget (?)
 
 ## stretch goals
 
