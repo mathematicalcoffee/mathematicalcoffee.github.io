@@ -207,6 +207,11 @@ task :authors do
   end
 end
 
+desc "Generate author, dateindex (year, year/month), category, tag indices"
+task :generate => [:authors, :dateindex, :tags, :categories] do
+  puts "Indices generated."
+end
+
 desc "Clean"
 task :clean do
   rm_rf ["generated"]
