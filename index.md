@@ -16,9 +16,9 @@ Here's a sample "posts list".
 
 ## To-Do
 
+- [ ] sidebar widget configuration in `_config.yml`
 - [ ] make use of | where: and | group_by: filters for years/months
 - [ ] remove obscene amounts of whitespace between tags https://github.com/penibelst/jekyll-compress-html
-- [ ] use maxcdn or use my own? cdn seems slow but maybe that's my internet
 - [ ] get custom CSS: http://getbootstrap.com/customize/
 - [ ] category vs tag
 - [ ] use modals for popups for social bar
@@ -63,4 +63,7 @@ git branch -d myfeaturebranch
 sed -ire 's!\{\{([^ ])!{{ \1!g' `find -name '*.html'`
 sed -ire 's!([^ ])\}\}!\1 }}!g' `find -name '*.html'`
 ```
+
+{{ site.posts | map:'tags' }}
+
 {% endraw %}

@@ -24,6 +24,9 @@ kramdown:
     input: GFM
 pygments: true
 
+sidebar:
+    cloud: [tags, categories]
+
 social: # site accounts as opposed to author accounts (only twitter used for 'share via')
     twitter: mathematicoffee
 social-post: [twitter, facebook, googleplus, pinterest]
