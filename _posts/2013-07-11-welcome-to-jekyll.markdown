@@ -2,7 +2,8 @@
 layout: post
 title:  "Welcome to Jekyll!"
 date:   2013-07-11 17:57:16 +10:00
-categories: jekyll update
+categories: blog
+tags: [jekyll]
 authors: [john]
 ---
 

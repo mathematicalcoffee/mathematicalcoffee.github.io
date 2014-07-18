@@ -2,7 +2,8 @@
 layout: post
 title:  "All about bootstrap!"
 date:   2014-07-10
-categories: bootstrap update
+categories: blog
+tags: bootstrap
 authors: [amy, john]
 ---
 

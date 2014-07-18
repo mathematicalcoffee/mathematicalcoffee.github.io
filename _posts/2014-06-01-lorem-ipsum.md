@@ -2,7 +2,8 @@
 layout: post
 title:  "Lorem Ipsum"
 date:   2014-06-01 21:41
-categories: lorem
+categories: demo
+tags: [lorem]
 authors: [amy]
 comments: true
 ---

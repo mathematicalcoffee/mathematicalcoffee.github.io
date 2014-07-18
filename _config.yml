@@ -64,5 +64,6 @@ markdown: kramdown
 kramdown:
     input: GFM
 pygments: true
+relative_permalinks: false
 
 timezone: "Australia/Brisbane"
