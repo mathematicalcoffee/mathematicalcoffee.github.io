@@ -28,8 +28,8 @@ sidebar:
     # they appear in the order you list.
     widgets: [archive, about, cloud]
     # --- configuration of widgets ---
-    # aboutme sidebar widget configuration
-    aboutme:
+    # about me sidebar widget configuration
+    about:
         # for each author, what shall we show on the social bar (in this order)?
         # choose from _social/data.yml (and add the nickname into authors)
         social: [email, twitter, facebook, googleplus, github, bitbucket, flickr]

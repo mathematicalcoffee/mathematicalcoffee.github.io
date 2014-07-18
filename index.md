@@ -16,6 +16,7 @@ Here's a sample "posts list".
 
 ## To-Do
 
+- [ ] google analytics
 - [x] sidebar widget configuration in `_config.yml`
 - [ ] remove obscene amounts of whitespace between tags https://github.com/penibelst/jekyll-compress-html
 - [ ] get custom CSS: http://getbootstrap.com/customize/
