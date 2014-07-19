@@ -16,6 +16,8 @@ Here's a sample "posts list".
 ## To-Do
 
 - [ ] **Big todo: handleize/handle filter appear not to work**
+- [ ] RSS /feeds/  and also per category
+- [ ] atom /feeds/
 - [ ] google analytics
 - [x] sidebar widget configuration in `_config.yml`
 - [ ] remove obscene amounts of whitespace between tags https://github.com/penibelst/jekyll-compress-html
@@ -40,8 +42,8 @@ Here's a sample "posts list".
 - [x] sidebar styling
 - [x] hosted by github/powered by jekyll/designed with bootstrap/copyright me footer
 - [ ] searching:
-    - [ ] tags (/tag/{tag}): tag cloud or list at the end of the post
-    - [ ] categories (/category/{category}): category cloud or list at the end of the post
+    - [x] tags (/tag/{tag}): tag cloud or list at the end of the post
+    - [x] categories (/category/{category}): category cloud or list at the end of the post
     - [x] author (/author/{author}): click author name, also about page, maybe sidebar
     - [x] date search (?) (/year/{year}, /month/{month}): from blog archive widget (?)
     - [ ] text search (?) (/search/{text}): from blog archive widget (?)

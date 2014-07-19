@@ -26,11 +26,12 @@ layout: frame
           {{ dd }}
         {% endif %}
         <br />
-        {% if page.categories %}
-        Tags: {{ page.categories | join: ', ' }}<br />
-<!-- TODO: link (search) site.categories.CATEGORY -->
-<!-- TODO: tags vs categories -->
-        {% endif %}
+        {% if page.categories and page.categories.size > 0 %}Categories:
+        {% for c in page.categories %}<a href="/category/{{ c }}/">{{ c }}</a>{% endfor %}
+        {% endif %}<br />
+        {% if page.tags and page.tags.size > 0 %}Tags:
+        {% for t in page.tags %}<a href="/tag/{{ t }}/">{{ t }}</a>{% endfor %}
+        {% endif %}<br />
     </p>
 
     {% if page.comments %}
