@@ -71,25 +71,23 @@ body {
   margin-top: 1em;
 }
 
-/* default: right caret
- * li that is the > of a ul.collapse.in: down caret
- */
-/* caret down: \f0d7
- * caret right: \f0da */
 .blog-archive ul.fa-ul {
     margin-left: 1.25em;
 }
-.blog-archive a:before {
+.blog-archive ul.fa-ul li a[data-toggle]+a {
+    vertical-align: middle;
+}
+.blog-archive ul.fa-ul li a[data-toggle]:after {
     font-family: 'FontAwesome';
     content: '\f0da'; /* caret right */
+    /* top right bottom left */
     margin:0 5px 0 -15px;
     color: #fff;
+    font-size: 133%;
+    vertical-align: middle;
 }
-.blog-archive a:not(.collapsed):before {
-    font-family: 'FontAwesome';
+.blog-archive ul.fa-ul li a[data-toggle]:not(.collapsed):after {
     content: '\f0d7'; /* caret down */
-    margin:0 5px 0 -15px;
-    color: #fff;
 }
 .blog-archive li.blog-archive-post > span {
     color: #50c0fb;

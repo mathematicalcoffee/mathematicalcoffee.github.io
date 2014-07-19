@@ -54,17 +54,17 @@ TODO:
     </ul>
   </li><!-- year -->
     {% endunless %}
-  <li><a {% if pageyear != currentyear %}class="collapsed"{% endif %} data-toggle="collapse" data-target="#collapse{{ currentyear }}">{{ currentyear }}</a>
+    <li><a {% if pageyear != currentyear %}class="collapsed"{% endif %} data-toggle="collapse" data-target="#collapse{{ currentyear }}"></a><a href="/{{ currentyear }}/">{{ currentyear }}</a>
     ({{ ycounts[yy] }}){% assign yy = yy | plus:1 %}
     <ul class="fa-ul collapse{% if pageyear == currentyear %} in{% endif %}"  id="collapse{{ currentyear }}">
-      <li><a {% if pagemonth != currentmonth %}class="collapsed"{% endif %} data-toggle="collapse" data-target="#collapse{{ currentmonth }}{{ currentyear }}">{{ currentmonth }}</a>
+      <li><a {% if pagemonth != currentmonth %}class="collapsed"{% endif %} data-toggle="collapse" data-target="#collapse{{ currentmonth }}{{ currentyear }}"></a><a href="/{{ currentyear }}/{{ post.date | date:'%m' }}"/>{{ currentmonth }}</a>
         ({{ mcounts[mm] }}){% assign mm = mm | plus:1 %}
         <ul class="fa-ul collapse{% if pagemonth == currentmonth %} in{% endif %}"  id="collapse{{ currentmonth }}{{ currentyear }}">
     {% assign year=currentyear %}{% assign month=currentmonth %}
   {% elsif currentmonth != month %}
         </ul>
       </li><!-- month -->
-      <li><a {% if pagemonth != currentmonth %}class="collapsed"{% endif %} data-toggle="collapse" data-target="#collapse{{ currentmonth }}{{ currentyear }}">{{ currentmonth }}</a>
+      <li><a {% if pagemonth != currentmonth %}class="collapsed"{% endif %} data-toggle="collapse" data-target="#collapse{{ currentmonth }}{{ currentyear }}"></span></a><a href="/{{ currentyear }}/{{ post.date | date:'%m' }}"/>{{ currentmonth }}</a>
         ({{ mcounts[mm] }}){% assign mm = mm | plus:1 %}
         <ul class="fa-ul collapse{% if pagemonth == currentmonth %} in{% endif %}"  id="collapse{{ currentmonth }}{{ currentyear }}">
   {% endif %}

@@ -42,8 +42,8 @@ Here's a sample "posts list".
     - [ ] tags (/tag/{tag}): tag cloud or list at the end of the post
     - [ ] categories (/category/{category}): category cloud or list at the end of the post
     - [ ] author (/author/{author}): click author name, also about page, maybe sidebar
+    - [x] date search (?) (/year/{year}, /month/{month}): from blog archive widget (?)
     - [ ] text search (?) (/search/{text}): from blog archive widget (?)
-    - [ ] date search (?) (/year/{year}, /month/{month}): from blog archive widget (?)
 
 ## stretch goals
 
