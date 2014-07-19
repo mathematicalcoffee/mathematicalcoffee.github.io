@@ -6,9 +6,9 @@ permalink: '/about/'
 <!-- TODO: reuse snippet from sidebar? allow extra content? -->
 {% for kv in site.authors %}
   {% assign author=kv[1] %}
-    <h2><a id="#{{author.display_name | handleize }}">{{author.display_name}}</a></h2>
+    <h2><a id="#{{author.handle }}">{{author.display_name}}</a></h2>
 
-    <a href="{%if author.gravatar %}http://www.gravatar.com/{{author.gravatar}}{% else %}#{% endif %}"><img src="http://www.gravatar.com/avatar/{{author.gravatar}}?d=monsterid" alt={{author.nickname}} /></a>
+    <a href="{%if author.gravatar %}http://www.gravatar.com/{{author.gravatar}}{% else %}#{% endif %}"><img src="http://www.gravatar.com/avatar/{{author.gravatar}}?d=monsterid" alt="{{ author.display_name }}"/></a>
   <p>{% if author.bio %}{{ author.bio }}{% endif %}</p>
   {% if author.gravatar %}
   <p><a href="http://www.gravatar.com/{{author.gravatar}}">View my gravatar profile</a></p>

@@ -10,6 +10,7 @@ require "yaml"
 # rake categories
 # rake tags
 # rake build == [categories, tags]
+# rake get_handle['author'] to get the handle
 
 ## -- Misc Configs -- ##
 source_dir      = "."
@@ -177,7 +178,7 @@ task :authors do
 
   config['authors'].each do |key, authorhash|
     author = authorhash['display_name']
-    handle = author.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')
+    handle = handelize(author)
     filename = "#{source_dir}/#{author_dir}/#{handle}.html"
     puts "Creating page: #{filename}"
     open(filename, 'w') do |page|
@@ -212,7 +213,39 @@ task :generate => [:authors, :dateindex, :tags, :categories] do
   puts "Indices generated."
 end
 
+desc "Tells you the handle for a given string (e.g. author). Usage rake handleize['John Doe']"
+# usage: rake handleize['John Doe'] to get john-doe
+desc "Begin a new post in #{source_dir}/#{posts_dir}"
+task :handleize, :content do |t, args|
+  if args.content
+    content = args.content
+  else
+    content = get_stdin("Enter the string to handleize: ")
+  end
+  puts get_handle(content)
+end
+
 desc "Clean"
 task :clean do
   rm_rf ["generated"]
 end
+
+def get_handle(content)
+  content.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')
+end
+
+## From Octopress Rakefile
+def get_stdin(message)
+  print message
+  STDIN.gets.chomp
+end
+
+def ask(message, valid_options)
+  if valid_options
+    answer = get_stdin("#{message} #{valid_options.to_s.gsub(/"/, '').gsub(/, /,'/')} ") while !valid_options.include?(answer)
+  else
+    answer = get_stdin(message)
+  end
+  answer
+end
+

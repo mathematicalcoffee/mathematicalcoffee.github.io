@@ -13,7 +13,7 @@ layout: frame
     {% if page.authors and page.authors.size > 0 %}{% assign tmp=page.authors.size | minus: 1 %}
       Posted by
       {% for k in page.authors %}{% assign a=site.authors[k] %}
-      <a href="/about#{{ a.display_name | handleize }}">{{ a.display_name }}</a>{% unless page.authors.size == 1 or forloop.last %}{% if forloop.index == tmp %} and{% else %},{% endif %}{% endunless %}
+      <a href="/author/{{ a.handle }}/">{{ a.display_name }}</a>{% unless page.authors.size == 1 or forloop.last %}{% if forloop.index == tmp %} and{% else %},{% endif %}{% endunless %}
       {% endfor %}
         {% else %}
           Posted

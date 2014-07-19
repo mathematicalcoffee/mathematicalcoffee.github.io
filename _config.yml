@@ -2,8 +2,27 @@ name: mathematical.coffee
 # write author: amy on your posts to have it signed.
 url: http://mathematicalcoffee.github.com
 authors: 
+    # author:
+    #   # for all authors, required:
+    #     display_name: the name as you wish to display it
+    #     # this is necessary for now as jekyll does not support handlelize filter
+    #     handle: the name run through `handleize`: downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')
+    #   # recommended:
+    #     email: email address
+    #     gravatar: your gravatar hash (md5 of your email address)
+    #     bio: a quick bio
+    #   # optional:
+    #     bitbucket:
+    #     facebook:
+    #     flickr:
+    #     github:
+    #     googleplus:
+    #     pinterest:
+    #     twitter:
+    #     web:
     amy:
         display_name: mathematical.coffee
+        handle: mathematicalcoffee
         email: mathematical.coffee@gmail.com
         gravatar: b5ea0d229d6133caa156292bbe25095f 
         bio: Mathematician by training, coder by hobby, <a href="http://www.nethack.org">nethacker</a> for life! I also enjoy making silly little crochet toys.
@@ -14,6 +33,7 @@ authors:
         web: http://mathematicalcoffee.github.com
     john:
         display_name: John Smith
+        handle: john-smith
         email: john.smith@email.com
         gravatar: 12345
         bio: Your modern mystery man.
@@ -67,3 +87,5 @@ relative_permalinks: false
 permalink: /:year/:month/:day/:title
 
 timezone: "Australia/Brisbane"
+
+exclude: [Rakefile, Gemfile, Gemfile.lock, README.md]

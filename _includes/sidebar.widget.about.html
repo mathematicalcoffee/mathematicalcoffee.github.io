@@ -1,17 +1,17 @@
 {% if site.sidebar.widgets contains 'about' %}
 <div class="sidebar-widget about">
   <h3>About {% if site.authors.size > 1 %}Us{% else %}Me{% endif %}</h3>
-
 {% for kv in site.authors %}
 <div class="vcard text-left">
   {% assign author=kv[1] %}
   <a href="{%if author.gravatar %}http://www.gravatar.com/{{author.gravatar}}{% else %}#{% endif %}">
     <img src="http://www.gravatar.com/avatar/{{author.gravatar}}?d=monsterid" alt={{author.nickname}} />
   </a>
-  <h4><a href="/about#{{author.display_name | handleize }}">{{author.display_name}}</a></h4>
+  <h4><a href="/about#{{author.handle }}">{{author.display_name}}</a></h4>
   <p>{% if author.bio %}{{ author.bio }}{% endif %}</p>
   {% if author.gravatar %}
-  <p><a href="http://www.gravatar.com/{{author.gravatar}}">View my gravatar profile</a></p>
+  <p><a href="http://www.gravatar.com/{{ author.gravatar}}">View my gravatar profile</a><br />
+  <a href="/author/{{ author.handle }}/">All posts by me</a></p>
   {% endif %}
   {% if site.sidebar.about.social and site.sidebar.about.social.size > 0 %}
   <div class="btn-group btn-group-xs btn-group-social-bar">
