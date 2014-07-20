@@ -178,12 +178,12 @@ task :authors do
 
   config['authors'].each do |key, authorhash|
     author = authorhash['display_name']
-    handle = handelize(author)
+    handle = get_handle(author)
     filename = "#{source_dir}/#{author_dir}/#{handle}.html"
     puts "Creating page: #{filename}"
     open(filename, 'w') do |page|
       page.puts "---"
-      page.puts "layout: default"
+      page.puts "layout: frame"
       page.puts "title: Posts written by #{author}"
       page.puts "permalink: /author/#{handle}/"
       page.puts "---"
@@ -193,17 +193,23 @@ task :authors do
       page.write "    {% assign c=c | plus:1 %}"
       page.write "  {% endif %}"
       page.write "{% endfor %}"
+      page.write "{% if site.search.titles-only %}<div id=\"content\"><h1 class='title'>{{ page.title }}</h1>{% endif %}"
       page.write "{% if c > 0 %}"
-      page.write "<p><ul>"
+      page.write "{% if site.search.titles-only %}<p><ul>{% endif %}"
       page.write "  {% for post in site.posts %}"
       page.write "    {% if post.authors and post.authors contains '#{key}' %}"
-      page.write "      {% include post-short.html %}"
+      page.write "      {% if site.search.titles-only %}"
+      page.write "        {% include post-short.html %}"
+      page.write "      {% else %}"
+      page.write "        {% include post-excerpt.html %}"
+      page.write "      {% endif %}"
       page.write "    {% endif %}"
       page.write "  {% endfor %}"
-      page.write "</ul></p>"
+      page.write "{% if site.search.titles-only %}</ul></p>{% endif %}"
       page.write "{% else %}"
       page.write "<p>No posts by this author.</p>"
       page.write "{% endif %}"
+      page.write "{% if site.search.titles-only %}</div>{% endif %}"
     end
   end
 end

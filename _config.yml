@@ -52,6 +52,11 @@ social: # site accounts as opposed to author accounts (only twitter used for 'sh
 # 'share' entry)
 social-post: [twitter, facebook, googleplus, pinterest]
 
+# search results
+search:
+    # display listing of titles only, or excerpts?
+    titles-only: false
+
 # What to put into the right-hand sidebar.
 sidebar:
     # available widgets: about, archive, cloud
