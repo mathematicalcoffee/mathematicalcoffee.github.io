@@ -15,7 +15,7 @@ Here's a sample "posts list".
 
 ## To-Do
 
-- [ ] **Big todo: handleize/handle filter appear not to work**
+- [x] **Big todo: handleize/handle filter appear not to work**
 - [ ] RSS /feeds/  and also per category
 - [ ] atom /feeds/
 - [ ] google analytics
@@ -46,12 +46,13 @@ Here's a sample "posts list".
     - [x] categories (/category/{category}): category cloud or list at the end of the post
     - [x] author (/author/{author}): click author name, also about page, maybe sidebar
     - [x] date search (?) (/year/{year}, /month/{month}): from blog archive widget (?)
-    - [ ] text search (?) (/search/{text}): from blog archive widget (?)
+- [ ] seach result listings: headings only, or excerpts allowed.
 
 ## stretch goals
 
 - [x] try with multiple authors
 - [ ] dropdown on author-social with more social when it doesn't fit on one line.
+- [ ] text search
 
 Comments, BASE_PATH for github:
 
