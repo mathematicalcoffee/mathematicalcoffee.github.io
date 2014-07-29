@@ -1,57 +1,27 @@
-name: My Blog
+name: mathematical.coffee
 # blog subtitle
 description: Demonstrating a skeleton build for a blog.
-url: http://your.url.com
+url: http://mathematicalcoffee.github.com
 timezone: "Australia/Brisbane"
 authors: 
-    # on posts, can put "authors: [jane, john]"
-    # author:
-    #   # for all authors, required:
-    #     display_name: the name as you wish to display it
-    #     handle: necessary since jekyll-github seems not to support the handleize filter.
-    #             Use `rake handleize['John Smith']` to get it.
-    #   # recommended:
-    #     email: email address
-    #     gravatar: your gravatar hash (md5 of your email address)
-    #     bio: a quick bio
-    #   # optional:
-    #     bitbucket:
-    #     facebook:
-    #     flickr:
-    #     github:
-    #     googleplus:
-    #     pinterest:
-    #     twitter:
-    #     web:
-    john:
-        display_name: John Smith
-        handle: john-smith
-        email: john.smith@email.com
-        gravatar: 12345
-        bio: Your modern mystery man.
-        # see _data/social.yml.
-        # bitbucket, email, facebook, flickr, github, googleplus, pinterest, twitter
-        twitter: twitter
-        # not yet used
-        web: http://janesmith.com
-    jane:
-      display_name: Jane Doe
-      handle: jane-doe
-      email: ~
-      web: ~
-      gravatar: 54321
-      bio: Your modern mystery woman.
-      bitbucket: ~
-      facebook: ~
-      flickr: ~
-      github: ~
-      googleplus: ~
+    amy:
+      display_name: Amy Chan
+      handle: amy-chan
+      email: mathematical.coffee@gmail.com
+      web: http://mathematicalcoffee.github.com
+      gravatar: b5ea0d229d6133caa156292bbe25095f 
+      bio: Mathematician by training, coder by hobby, <a href="http://www.nethack.org">nethacker</a> for life! I also enjoy making silly little crochet toys.
+      bitbucket: mathematicalcoffee
+      facebook: 
+      flickr: mathematicalcoffee
+      github: mathematicalcoffee
+      googleplus: AmycoffeebugChan
       pinterest: ~
-      twitter: ~
+      twitter: mathematicoffee
 
 # ------ SITE CONFIGURATION ------ #
 social: # site accounts as opposed to author accounts (only twitter used for 'share via')
-    twitter: site.twitter
+    twitter: mathematicoffee
 
 # for each post, what social share widgets do you want? (see _data/social.yml, needs
 # 'share' entry)
