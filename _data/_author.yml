@@ -1,0 +1,19 @@
+# author template
+#-- for all authors, required:
+display_name: ~ # Your name as you wish to display it (John Doe)
+handle: ~  # necessary since jekyll-github seems not to support the handleize filter.
+           # Use `rake handleize['John Smith']` to get it, or
+           #  if you use rake add_author it will be done for you
+#-- recommended:
+email: ~
+web: ~
+gravatar: ~ # gravatar hash (md5 of your email address)
+bio: ~ # A quick one-sentence bio about me.
+# optional: your usernames on these (so people can find you)
+bitbucket: ~
+facebook: ~
+flickr: ~
+github: ~
+googleplus: ~
+pinterest: ~
+twitter: ~

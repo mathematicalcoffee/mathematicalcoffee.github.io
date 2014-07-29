@@ -14,11 +14,17 @@
   <a href="/author/{{ author.handle }}/">All posts by me</a></p>
   {% endif %}
   {% if site.sidebar.about.social and site.sidebar.about.social.size > 0 %}
+  {% capture cache %}{% assign c=0 %}
+    {% for key in site.sidebar.about.social %}
+      {% assign dat=site.data.social[key] %}
+      {% if dat and dat.profile and author[key] %}
+        {% assign c=c | plus: 1 %}
+      {% endif %}
+      {% endfor %}{% endcapture %}{% assign cache=nil %}{% if c > 0 %}
   <div class="btn-group btn-group-xs btn-group-social-bar">
     <button type="button" class="btn btn-clear disabled hidden-sm">
       Find me!
-    </button>
-    {% for key in site.sidebar.about.social %}{% assign dat=site.data.social[key] %}
+    </button>{% for key in site.sidebar.about.social %}{% assign dat=site.data.social[key] %}
       {% if dat and dat.profile and author[key] %}
     <button type="button" class="btn btn-clear">
       <a target="_blank"
@@ -26,12 +32,7 @@
         title="Find me on {{ dat.name }}">
         <span class="fa {{ dat.icon }} fa-fw"></span>
       </a>
-    </button>
-      {% endif %}
-    {% endfor %}<!-- social -->
-  </div>
-  {% endif %}
-</div>
-{% endfor %}<!-- author -->
-</div><!-- about -->
-{% endif %}
+    </button>{% endif %}{% endfor %}
+  </div>{% endif %}{% endif %}<!-- social -->
+</div>{% endfor %}<!-- author -->
+</div><!-- about -->{% endif %}

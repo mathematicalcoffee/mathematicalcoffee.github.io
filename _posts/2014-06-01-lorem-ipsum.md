@@ -4,7 +4,7 @@ title:  "Lorem Ipsum"
 date:   2014-06-01 21:41
 categories: demo
 tags: [lorem]
-authors: [amy]
+authors: [jane]
 comments: true
 ---
 

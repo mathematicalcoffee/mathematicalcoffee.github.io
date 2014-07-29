@@ -4,7 +4,7 @@ title:  "All about bootstrap!"
 date:   2014-07-10
 categories: blog
 tags: bootstrap
-authors: [amy, john]
+authors: [jane, john]
 ---
 
 [Bootstrap][] is the most popular HTML, CSS, and JS framework for developing responsive, mobile first projects on the web.
