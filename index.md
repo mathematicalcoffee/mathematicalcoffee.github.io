@@ -43,6 +43,7 @@ Here's a sample "posts list".
 - [x] sidebar styling
 - [x] hosted by github/powered by jekyll/designed with bootstrap/copyright me footer
 - [ ] searching:
+    - [ ] fulltext search (via search bar)
     - [x] tags (/tag/{tag}): tag cloud or list at the end of the post
     - [x] categories (/category/{category}): category cloud or list at the end of the post
     - [x] author (/author/{author}): click author name, also about page, maybe sidebar

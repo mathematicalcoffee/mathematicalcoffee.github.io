@@ -1,5 +1,5 @@
 ---
-layout: none
+layout: nil
 ---
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
@@ -13,7 +13,7 @@ layout: none
     {% include atom.author.xml %}
   {% endfor %}{% endcapture %}
   {{ allauthors }}
-  {% for post in site.posts %}
+  {% for post in site.posts limit: 20 %}
   <entry>
     <id>{{ site.url }}{{ post.id }}</id>
     <link type="text/html" rel="alternate" href="{{ site.url }}{{ post.url }}"/>
