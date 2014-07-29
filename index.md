@@ -71,7 +71,4 @@ git branch -d myfeaturebranch
 sed -ire 's!\{\{([^ ])!{{ \1!g' `find -name '*.html'`
 sed -ire 's!([^ ])\}\}!\1 }}!g' `find -name '*.html'`
 ```
-
-{{ site.posts | map:'tags' }}
-
 {% endraw %}
