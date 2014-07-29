@@ -3,6 +3,7 @@ require "bundler/setup"
 require "stringex"
 require "jekyll"
 require "yaml"
+require "pp"
 
 # based off octopress rakefile: https://github.com/imathis/octopress/blob/master/Rakefile
 # rake -T to see tasks
@@ -21,6 +22,8 @@ tag_dir         = "generated/tag"
 author_dir      = "generated/author"
 dateindex_dir   = "generated/date"
 
+config_yml      = "_config.yml"
+
 # usage: rake new_post[my-new-post] or rake new_post['my new post'] or rake new_post (defaults to "new-post")
 desc "Begin a new post in #{source_dir}/#{posts_dir}"
 task :new_post, :title do |t, args|
@@ -29,7 +32,7 @@ task :new_post, :title do |t, args|
   else
     title = get_stdin("Enter a title for your post: ")
   end
-  raise "### Could not find the source directory." unless File.directory?(source_dir)
+  raise "### Could not find the source directory.\n\n" unless File.directory?(source_dir)
   mkdir_p "#{source_dir}/#{posts_dir}"
   filename = "#{source_dir}/#{posts_dir}/#{Time.now.strftime('%Y-%m-%d')}-#{title.to_url}.#{new_post_ext}"
   if File.exist?(filename)
@@ -52,7 +55,7 @@ end
 # usage: rake categories to generate category index (category/<category>)
 desc "Generate category pages into #{source_dir}/#{category_dir}/"
 task :categories do
-  raise "### Could not find the source directory." unless File.directory?(source_dir)
+  raise "### Could not find the source directory.\n\n" unless File.directory?(source_dir)
   mkdir_p "#{source_dir}/#{category_dir}"
   puts "Generating category pages..."
 
@@ -80,7 +83,7 @@ end
 # usage: rake tags to generate tag index (tag/<tag>)
 desc "Generate tag pages into #{source_dir}/#{tag_dir}/"
 task :tags do
-  raise "### Could not find the source directory." unless File.directory?(source_dir)
+  raise "### Could not find the source directory.\n\n" unless File.directory?(source_dir)
   mkdir_p "#{source_dir}/#{tag_dir}"
   puts "Generating tag pages..."
 
@@ -108,7 +111,7 @@ end
 # usage: rake dateindex to generate year/month index.
 desc "Generate year and year/month indices in #{source_dir}/#{dateindex_dir}"
 task :dateindex do
-  raise "### Could not find the source directory." unless File.directory?(source_dir)
+  raise "### Could not find the source directory.\n\n" unless File.directory?(source_dir)
   mkdir_p "#{source_dir}/#{dateindex_dir}"
   puts "Generating date index pages..."
 
@@ -171,14 +174,14 @@ end
 # usage: rake authors to generate author index (author/<author>)
 desc "Generate author pages into #{source_dir}/#{author_dir}/"
 task :authors do
-  raise "### Could not find the source directory." unless File.directory?(source_dir)
+  raise "### Could not find the source directory.\n\n" unless File.directory?(source_dir)
   mkdir_p "#{source_dir}/#{author_dir}"
   puts "Generating author pages..."
-  config = YAML::load_file('_config.yml')
+  config = YAML::load_file(config_yml)
 
   config['authors'].each do |key, authorhash|
     author = authorhash['display_name']
-    handle = handelize(author)
+    handle = get_handle(author)
     filename = "#{source_dir}/#{author_dir}/#{handle}.html"
     puts "Creating page: #{filename}"
     open(filename, 'w') do |page|
@@ -215,7 +218,6 @@ end
 
 desc "Tells you the handle for a given string (e.g. author). Usage rake handleize['John Doe']"
 # usage: rake handleize['John Doe'] to get john-doe
-desc "Begin a new post in #{source_dir}/#{posts_dir}"
 task :handleize, :content do |t, args|
   if args.content
     content = args.content
@@ -223,6 +225,52 @@ task :handleize, :content do |t, args|
     content = get_stdin("Enter the string to handleize: ")
   end
   puts get_handle(content)
+end
+
+desc "Checks the blog"
+task :check do
+    # check that all authors have an entry
+  config = YAML::load_file(config_yml)
+  options = Jekyll.configuration({})
+  site = Jekyll::Site.new(options)
+  site.read_posts('')
+  # check that all post authors are in site.authors
+  puts "Checking that all post authors are in site.authors..."
+  post_authors = site.posts.map{ |p| p.data['authors'] }.flatten.uniq
+  config_authors = config['authors'].keys
+  raise ("### The following post authors are not in #{config_yml}'s 'authors' key:\n    " +
+         (post_authors - config_authors).join(', ') +
+        "\nYou can use `rake add_author` to generate a template to include into #{config_yml}.\n\n") unless
+  (post_authors - config_authors).empty?
+
+  # check that all post authors have display_name and handle
+  puts "Checking that all authors have display_name and a handle..."
+  config['authors'].each do |k, author|
+      raise "### Author with key '#{k}' has no display_name, add one in #{config_yml}.\n\n" unless author['display_name']
+      h = get_handle(author['display_name'])
+      raise "### Author '#{author['display_name']}' has no handle, use 'handle: #{h}' in #{config_yml}\n\n" unless author['handle']
+      raise "### Author '#{author['display_name']}' should have handle '#{h}', not '#{author['handle']}'\n\n" unless author['handle'] == h
+  end
+
+  puts "Done."
+end
+
+desc "Adds an author to _config.yml. Usage: rake add_author"
+task :add_author do
+  display_name = get_stdin("The author's full/display name (e.g. John Doe): ")
+  nick = get_stdin("Enter a one-word name to refer to this author in the author part of a post's frontmatter (e.g. john): ")
+  handle = get_handle(display_name)
+
+  author = YAML::load_file('_data/_author.yml')
+  author['display_name'] = display_name
+  author['handle'] = handle
+  puts "COPY-PASTE the following into the 'authors' part of #{config_yml} and edit further."
+  puts YAML::dump({nick => author})
+end
+
+desc "Checks the blog's metadata, and generates post indices."
+task :build => [:check, :generate] do
+    puts "Done. Use (e.g.) bundle exec jekyll serve --watch"
 end
 
 desc "Clean"

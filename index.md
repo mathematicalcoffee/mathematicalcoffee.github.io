@@ -21,6 +21,7 @@ Here's a sample "posts list".
 - [ ] google analytics
 - [x] sidebar widget configuration in `_config.yml`
 - [ ] remove obscene amounts of whitespace between tags https://github.com/penibelst/jekyll-compress-html
+    * [ ] respace out liquid for readability.
 - [ ] get custom CSS: http://getbootstrap.com/customize/
 - [ ] use modals for popups for social bar
 - [ ] use same code for post layout in post page and blog listing page.
