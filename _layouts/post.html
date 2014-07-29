@@ -34,7 +34,7 @@ layout: frame
         {% endif %}<br />
     </p>
 
-    {% if page.comments %}
+    {% if page.comments and site.disqus_shortname %}
       {% include disqus.html %}
     {% endif %}
     </div>
