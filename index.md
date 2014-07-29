@@ -17,7 +17,7 @@ Here's a sample "posts list".
 
 - [x] **Big todo: handleize/handle filter appear not to work**
 - [ ] RSS /feeds/  and also per category
-- [ ] atom /feeds/
+- [x] atom /feeds/atom.xml
 - [ ] google analytics
 - [x] sidebar widget configuration in `_config.yml`
 - [ ] remove obscene amounts of whitespace between tags https://github.com/penibelst/jekyll-compress-html
