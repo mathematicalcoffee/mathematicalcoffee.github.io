@@ -53,7 +53,7 @@ authors:
 # disqus shortname for the site. if not here you don't get comments.
 disqus_shortname: EDITME
 social: # site accounts as opposed to author accounts (only twitter used for 'share via')
-    twitter: site.twitter
+    twitter: ~
 
 # for each post, what social share widgets do you want? (see _data/social.yml, needs
 # 'share' entry)
