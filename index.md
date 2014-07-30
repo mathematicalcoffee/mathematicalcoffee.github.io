@@ -15,8 +15,11 @@ Here's a sample "posts list".
 
 ## To-Do
 
+- [ ] migrate rakefile to `_templates`
 - [x] **Big todo: handleize/handle filter appear not to work**
-- [ ] RSS /feeds/  and also per category
+- [ ] RSS feeds and also per category (per label?)
+    * [ ] links in HTML header to atom/rss
+    * [ ] blogger appears to use a bunch of `<category term="blah"/>` tags
 - [x] atom /feeds/atom.xml
 - [ ] google analytics
 - [x] sidebar widget configuration in `_config.yml`

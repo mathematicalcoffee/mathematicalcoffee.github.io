@@ -15,12 +15,16 @@ require "pp"
 
 ## -- Misc Configs -- ##
 source_dir      = "."
+template_dir    = "_templates"
 posts_dir       = "_posts"
 new_post_ext    = "md"
 category_dir    = "generated/category"
 tag_dir         = "generated/tag"
 author_dir      = "generated/author"
 dateindex_dir   = "generated/date"
+feed_dir        = "generated/feeds"
+
+rss_category_template = "#{template_dir}/rss.category.xml"
 
 config_yml      = "_config.yml"
 
@@ -211,8 +215,29 @@ task :authors do
   end
 end
 
-desc "Generate author, dateindex (year, year/month), category, tag indices"
-task :generate => [:authors, :dateindex, :tags, :categories] do
+# Makes an rss feed per category (TODO: blogspot does by label...)
+# blogspot does by label, e.g.
+# http://mathematicalcoffee.blogspot.com/feeds/posts/default/-/gnome-shell-extension
+desc "Generate per-category RSS feeds into #{source_dir}/#{feed_dir}/"
+task :rss do
+  raise "### Could not find the source directory.\n\n" unless File.directory?(source_dir)
+  mkdir_p "#{source_dir}/#{feed_dir}"
+  puts "Generating RSS category pages..."
+
+  options = Jekyll.configuration({})
+  site = Jekyll::Site.new(options)
+  site.read_posts('')
+  site.categories.sort.each do |category, posts|
+    filename = "#{source_dir}/#{feed_dir}/rss.#{category}.xml"
+    puts "Creating page: #{filename}"
+    open(filename, 'w') do |page|
+      page.puts IO.read(rss_category_template).gsub('%{category}', category)
+    end
+  end
+end
+
+desc "Generate author, dateindex (year, year/month), category, tag indices and rss feeds"
+task :generate => [:authors, :dateindex, :tags, :categories, :rss] do
   puts "Indices generated."
 end
 

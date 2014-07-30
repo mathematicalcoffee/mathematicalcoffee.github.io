@@ -13,13 +13,6 @@ layout: nil
     <lastBuildDate>{{ site.time | date: "%a, %d %b %Y %H:%M:%S %z" }}</lastBuildDate>
     {% for post in site.posts limit: 20 %}
     <item>
-      <title>{{ post.title | xml_escape }}</title>
-      <link>{{ site.url }}{{ post.url }}</link>
-      <pubDate>{{ post.date | date: "%a, %d %b %Y %H:%M:%S %z" }}</pubDate>
-      <author>{{ post.authors[0].email }} ({{ post.authors[0].dislay_name }}){% if post.authors.size > 1 %} and others{% endif %}</author>
-      <guid isPermaLink="true">{{ site.url }}{{ post.url }}</guid>
-      <description>{{ post.content | xml_escape }}</description>
-    </item>
-    {% endfor %}
+        {% include rss.post.xml %}{% endfor %}
   </channel> 
 </rss>
