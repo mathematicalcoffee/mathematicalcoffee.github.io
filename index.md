@@ -18,9 +18,10 @@ Here's a sample "posts list".
 - [ ] migrate rakefile to `_templates`
 - [x] **Big todo: handleize/handle filter appear not to work**
 - [ ] RSS feeds and also per category (per label?)
-    * [ ] links in HTML header to atom/rss
-    * [ ] blogger appears to use a bunch of `<category term="blah"/>` tags
+    * [x] links in HTML header to atom/rss (autodiscovery)
+    * [ ] subscribe button somewhere
 - [x] atom /feeds/atom.xml
+- [ ] support different published and updated fields, also in the RSS ('rake touch', or 'rake build' will update to last-modified)
 - [ ] google analytics
 - [x] sidebar widget configuration in `_config.yml`
 - [ ] remove obscene amounts of whitespace between tags https://github.com/penibelst/jekyll-compress-html
