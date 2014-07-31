@@ -15,9 +15,13 @@ Here's a sample "posts list".
 
 ## To-Do
 
+- [ ] migrate rakefile to `_templates`
 - [x] **Big todo: handleize/handle filter appear not to work**
-- [ ] RSS /feeds/  and also per category
+- [ ] RSS feeds and also per category (per label?)
+    * [x] links in HTML header to atom/rss (autodiscovery)
+    * [ ] subscribe button somewhere
 - [x] atom /feeds/atom.xml
+- [ ] support different published and updated fields, also in the RSS ('rake touch', or 'rake build' will update to last-modified)
 - [ ] google analytics
 - [x] sidebar widget configuration in `_config.yml`
 - [ ] remove obscene amounts of whitespace between tags https://github.com/penibelst/jekyll-compress-html
@@ -43,6 +47,7 @@ Here's a sample "posts list".
 - [x] sidebar styling
 - [x] hosted by github/powered by jekyll/designed with bootstrap/copyright me footer
 - [ ] searching:
+    - [ ] fulltext search (via search bar)
     - [x] tags (/tag/{tag}): tag cloud or list at the end of the post
     - [x] categories (/category/{category}): category cloud or list at the end of the post
     - [x] author (/author/{author}): click author name, also about page, maybe sidebar

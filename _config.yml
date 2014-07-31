@@ -20,6 +20,8 @@ authors:
       twitter: mathematicoffee
 
 # ------ SITE CONFIGURATION ------ #
+# disqus shortname for the site. if not here you don't get comments.
+disqus_shortname: EDITME
 social: # site accounts as opposed to author accounts (only twitter used for 'share via')
     twitter: mathematicoffee
 
