@@ -19,7 +19,7 @@ Here's a sample "posts list".
 - [x] **Big todo: handleize/handle filter appear not to work**
 - [ ] RSS feeds and also per category (per label?)
     * [x] links in HTML header to atom/rss (autodiscovery)
-    * [ ] subscribe button somewhere
+    * [x] subscribe button somewhere
 - [x] atom /feeds/atom.xml
 - [ ] support different published and updated fields, also in the RSS ('rake touch', or 'rake build' will update to last-modified)
 - [ ] google analytics

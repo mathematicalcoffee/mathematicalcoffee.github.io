@@ -1,4 +1,3 @@
-{% if site.sidebar.widgets contains 'about' %}
 <div class="sidebar-widget about">
   <h3>About {% if site.authors.size > 1 %}Us{% else %}Me{% endif %}</h3>
 {% for kv in site.authors %}
@@ -35,4 +34,4 @@
     </button>{% endif %}{% endfor %}
   </div>{% endif %}{% endif %}<!-- social -->
 </div>{% endfor %}<!-- author -->
-</div><!-- about -->{% endif %}
+</div><!-- about -->
