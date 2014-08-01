@@ -3,7 +3,6 @@ require "bundler/setup"
 require "stringex"
 require "jekyll"
 require "yaml"
-require "pp"
 require "cgi"
 
 # based off octopress rakefile: https://github.com/imathis/octopress/blob/master/Rakefile
@@ -230,6 +229,42 @@ task :add_author do
   author['handle'] = handle
   puts "COPY-PASTE the following into the 'authors' part of #{config_yml} and edit further."
   puts YAML::dump({nick => author})
+end
+
+desc "Refreshes 'updated' field of post frontmatter to the current time."
+task :edit_post do
+  options = Jekyll.configuration({})
+  site = Jekyll::Site.new(options)
+  site.read_posts('')
+  puts "Which post to edit? "
+
+  msg = site.posts.each_with_index.map{ |post, i|
+      "[#{i + 1}] #{post.date.strftime('%Y-%m-%d')} #{post.title}" }
+  answer = ask("Which post do you wish to edit?\n" + msg.join("\n") + "\n",
+               (1..site.posts.size).map{|i| i.to_s})
+  post = site.posts[answer.to_i - 1]
+  cont = File.readlines(post.path)
+  frontm = (0..cont.size).select{ |i| cont[i] =~ /^--- *$/ }
+  rest   = cont[(frontm[1] + 1)..-1]
+  frontm = cont[frontm[0]..frontm[1]]
+
+  if frontm.size >= 2
+    i = (0..frontm.size).select{ |i| frontm[i] =~ /^ *updated *:/ }
+    str = 'updated: ' + Time.now.strftime('%Y-%m-%d %H:%M:%S %z')
+    if i.size > 0
+        frontm[i[0]] = str
+    else
+        frontm.insert(frontm.size - 1, str)
+    end
+  end
+
+  # write back out
+  open(post.path, 'w') do |page|
+      page.puts frontm
+      page.puts rest
+  end
+  puts "Added field \"#{str}\" to frontmatter of #{post.path}."
+  puts "Done."
 end
 
 desc "Cleans, checks the blog's metadata, and generates post indices."

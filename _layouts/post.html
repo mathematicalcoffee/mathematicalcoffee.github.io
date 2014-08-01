@@ -10,6 +10,7 @@ layout: frame
     <div class='post-footer'>
         <p>
     {% include social.html %}
+    {% if page.updated %}Last updated {{ page.updated | date: '%A, %d %B %Y at %H:%M' }}<br />{% endif %}
     {% if page.authors and page.authors.size > 0 %}{% assign tmp=page.authors.size | minus: 1 %}
       Posted by
       {% for k in page.authors %}{% assign a=site.authors[k] %}

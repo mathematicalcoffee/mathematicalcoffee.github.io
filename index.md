@@ -16,7 +16,6 @@ Here's a sample "posts list".
 ## To-Do
 
 - [ ] google analytics
-- [ ] support different published and updated fields, also in the RSS ('rake touch', or 'rake build' will update to last-modified)
 - [ ] remove obscene amounts of whitespace between tags https://github.com/penibelst/jekyll-compress-html
     * [ ] respace out liquid for readability.
 - [ ] get custom CSS: http://getbootstrap.com/customize/
@@ -53,6 +52,7 @@ Here's a sample "posts list".
     - [x] categories (/category/{category}): category cloud or list at the end of the post
     - [x] author (/author/{author}): click author name, also about page, maybe sidebar
     - [x] date search (?) (/year/{year}, /month/{month}): from blog archive widget (?)
+- [x] 'rake edit_post' to refresh the 'updated' field of metadata to the current time.
 
 ## stretch goals
 
