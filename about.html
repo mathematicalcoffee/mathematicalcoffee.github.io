@@ -11,9 +11,18 @@ permalink: '/about/'
     <a href="{%if author.gravatar %}http://www.gravatar.com/{{author.gravatar}}{% else %}#{% endif %}"><img src="http://www.gravatar.com/avatar/{{author.gravatar}}?d=monsterid" alt="{{ author.display_name }}"/></a>
   <p>{% if author.bio %}{{ author.bio }}{% endif %}</p>
   {% if author.gravatar %}
-  <p><a href="http://www.gravatar.com/{{author.gravatar}}">View my gravatar profile</a></p>
+  <p><a href="http://www.gravatar.com/{{author.gravatar}}">View my gravatar profile</a><br />
+  <a href="/author/{{ author.handle }}/">All posts by me</a></p>
   {% endif %}
   {% if site.sidebar.about.social and site.sidebar.about.social.size > 0 %}
+  {% capture cache %}{% assign c=0 %}
+    {% for key in site.sidebar.about.social %}
+      {% assign dat=site.data.social[key] %}
+      {% if dat and dat.profile and author[key] %}
+        {% assign c=c | plus: 1 %}
+      {% endif %}
+    {% endfor %}
+  {% endcapture %}{% assign cache=nil %}{% if c > 0 %}
   <div class="btn-group btn-group-xs btn-group-social-bar">
     <button type="button" class="btn btn-default disabled">
       Find me!
@@ -29,7 +38,7 @@ permalink: '/about/'
     </button>
       {% endif %}
     {% endfor %}<!-- social -->
-  </div>
+  </div>{% endif %}
   {% endif %}
 {% endfor %}<!-- author -->
 </div><!-- about -->

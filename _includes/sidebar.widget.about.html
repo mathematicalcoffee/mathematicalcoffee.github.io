@@ -19,7 +19,8 @@
       {% if dat and dat.profile and author[key] %}
         {% assign c=c | plus: 1 %}
       {% endif %}
-      {% endfor %}{% endcapture %}{% assign cache=nil %}{% if c > 0 %}
+    {% endfor %}
+  {% endcapture %}{% assign cache=nil %}{% if c > 0 %}
   <div class="btn-group btn-group-xs btn-group-social-bar">
     <button type="button" class="btn btn-clear disabled hidden-sm">
       Find me!
