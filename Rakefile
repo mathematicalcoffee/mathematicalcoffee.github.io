@@ -4,6 +4,7 @@ require "stringex"
 require "jekyll"
 require "yaml"
 require "pp"
+require "cgi"
 
 # based off octopress rakefile: https://github.com/imathis/octopress/blob/master/Rakefile
 # rake -T to see tasks
@@ -25,6 +26,12 @@ dateindex_dir   = "generated/date"
 feed_dir        = "generated/feeds"
 
 rss_category_template = "#{template_dir}/rss.category.xml"
+new_post_template = "#{template_dir}/post.md"
+category_index_template = "#{template_dir}/category_index.md"
+tag_index_template = "#{template_dir}/tag_index.md"
+year_index_template = "#{template_dir}/year_index.md"
+month_index_template = "#{template_dir}/month_index.md"
+author_index_template = "#{template_dir}/author_index.md"
 
 config_yml      = "_config.yml"
 
@@ -44,15 +51,9 @@ task :new_post, :title do |t, args|
   end
   puts "Creating new post: #{filename}"
   open(filename, 'w') do |post|
-    post.puts "---"
-    post.puts "layout: post"
-    post.puts "title: \"#{title.gsub(/&/,'&amp;')}\""
-    post.puts "date: #{Time.now.strftime('%Y-%m-%d %H:%M:%S %z')}"
-    post.puts "comments: true"
-    post.puts "categories: "
-    post.puts "tags: "
-    post.puts "authors: "
-    post.puts "---"
+    post.puts template_sub(IO.read(new_post_template),
+                           {'title' => CGI.escapeHTML(title),
+                            'date'  => Time.now.strftime('%Y-%m-%d %H:%M:%S %z')})
   end
 end
 
@@ -70,16 +71,8 @@ task :categories do
     filename = "#{source_dir}/#{category_dir}/#{category}.html"
     puts "Creating page: #{filename}"
     open(filename, 'w') do |page|
-      page.puts "---"
-      page.puts "layout: default"
-      page.puts "title: Posts in category \"#{category}\""
-      page.puts "permalink: /category/#{category}/"
-      page.puts "---"
-      page.puts "<ul>"
-      page.write "  {% for post in site.categories.#{category} %}"
-      page.write "    {% include post-short.html %}"
-      page.write "  {% endfor %}"
-      page.puts "</ul>"
+      page.puts template_sub(IO.read(category_index_template),
+                             {'category' => category})
     end
   end
 end
@@ -98,16 +91,8 @@ task :tags do
     filename = "#{source_dir}/#{tag_dir}/#{tag}.html"
     puts "Creating page: #{filename}"
     open(filename, 'w') do |page|
-      page.puts "---"
-      page.puts "layout: default"
-      page.puts "title: Posts tagged \"#{tag}\""
-      page.puts "permalink: /tag/#{tag}/"
-      page.puts "---"
-      page.puts "<ul>"
-      page.write "  {% for post in site.tags.#{tag} %}"
-      page.write "    {% include post-short.html %}"
-      page.write "  {% endfor %}"
-      page.puts "</ul>"
+      page.puts template_sub(IO.read(tag_index_template),
+                             {'tag' => tag})
     end
   end
 end
@@ -129,27 +114,8 @@ task :dateindex do
     filename="#{source_dir}/#{dateindex_dir}/#{year}.html"
     puts "Creating page: #{filename}"
     open(filename, 'w') do |page|
-      page.puts  "---"
-      page.puts  "layout: default"
-      page.puts  "title: Posts for #{year}"
-      page.puts  "permalink: /#{year}/"
-      page.puts  "---"
-      page.puts  "<ul>"
-      page.write "{% for post in site.posts %}"
-      page.write "  {% assign y=post.date | date: '%Y' %}"
-      page.write "    {% if y == '#{year}' %}"
-      page.write "      {% capture currentmonth %}{{post.date | date: '%B'}}{% endcapture %}"
-      page.write "      {% if currentmonth != month %}"
-      page.write "        {% unless forloop.first %}"
-      page.write "  </li></ul>{% endunless %}"
-      page.write "  <li><a href=\"/#{year}/{{ post.date | date: '%m'}}/\">{{ currentmonth }}</a>"
-      page.write "    <ul>"
-      page.write "          {% capture month %}{{currentmonth}}{% endcapture %} "
-      page.write "      {% endif %}"
-      page.write "            {% include post-short.html %}"
-      page.write "    {% endif %}"
-      page.write "{% endfor %}"
-      page.puts  "</ul>"
+      page.puts template_sub(IO.read(year_index_template),
+                             {'year' => year})
     end
 
     ppy.each do |month, pp|
@@ -157,19 +123,10 @@ task :dateindex do
       puts "Creating page: #{filename}"
       monyear = pp[0].date.strftime('%B %Y')
       open(filename, 'w') do |page|
-        page.puts "---"
-        page.puts "layout: default"
-        page.puts "title: Posts for #{monyear}"
-        page.puts "permalink: /#{year}/#{month}/"
-        page.puts "---"
-        page.puts "<ul>"
-        page.write "  {% for post in site.posts %}"
-        page.write "    {% assign my=post.date | date: '%B %Y' %}"
-        page.write "      {% if my == '#{monyear}' %}"
-        page.write "        {% include post-short.html %}"
-        page.write "      {% endif %}"
-        page.write "  {% endfor %}"
-        page.puts "</ul>"
+          page.puts template_sub(IO.read(month_index_template),
+                                 {'year' => year,
+                                  'month' => month,
+                                  'monyear' => monyear})
       end
     end # month
   end # year
@@ -185,32 +142,14 @@ task :authors do
 
   config['authors'].each do |key, authorhash|
     author = authorhash['display_name']
-    handle = get_handle(author)
+    handle = authorhash['handle'] or get_handle(author)
     filename = "#{source_dir}/#{author_dir}/#{handle}.html"
     puts "Creating page: #{filename}"
     open(filename, 'w') do |page|
-      page.puts "---"
-      page.puts "layout: default"
-      page.puts "title: Posts written by #{author}"
-      page.puts "permalink: /author/#{handle}/"
-      page.puts "---"
-      page.write "{% assign c=0 %}"
-      page.write "{% for post in site.posts %}"
-      page.write "  {% if post.authors and post.authors contains '#{key}' %}"
-      page.write "    {% assign c=c | plus:1 %}"
-      page.write "  {% endif %}"
-      page.write "{% endfor %}"
-      page.write "{% if c > 0 %}"
-      page.write "<p><ul>"
-      page.write "  {% for post in site.posts %}"
-      page.write "    {% if post.authors and post.authors contains '#{key}' %}"
-      page.write "      {% include post-short.html %}"
-      page.write "    {% endif %}"
-      page.write "  {% endfor %}"
-      page.write "</ul></p>"
-      page.write "{% else %}"
-      page.write "<p>No posts by this author.</p>"
-      page.write "{% endif %}"
+      page.puts template_sub(IO.read(author_index_template),
+                             {'author' => author,
+                              'handle' => handle,
+                              'key' => key})
     end
   end
 end
@@ -261,8 +200,8 @@ task :check do
   site.read_posts('')
   # check that all post authors are in site.authors
   puts "Checking that all post authors are in site.authors..."
-  post_authors = site.posts.map{ |p| p.data['authors'] }.flatten.uniq
-  config_authors = config['authors'].keys
+  post_authors = site.posts.map{ |p| p.data['authors'] }.flatten.uniq.compact
+  config_authors = config['authors'].keys.compact
   raise ("### The following post authors are not in #{config_yml}'s 'authors' key:\n    " +
          (post_authors - config_authors).join(', ') +
         "\nYou can use `rake add_author` to generate a template to include into #{config_yml}.\n\n") unless
@@ -293,8 +232,8 @@ task :add_author do
   puts YAML::dump({nick => author})
 end
 
-desc "Checks the blog's metadata, and generates post indices."
-task :build => [:check, :generate] do
+desc "Cleans, checks the blog's metadata, and generates post indices."
+task :build => [:clean, :check, :generate] do
     puts "Done. Use (e.g.) bundle exec jekyll serve --watch"
 end
 
@@ -322,3 +261,6 @@ def ask(message, valid_options)
   answer
 end
 
+def template_sub(string, dict)
+    string.gsub(/%\{([a-zA-Z_0-9]+)\}/) do |m| dict["#{$1}"] end
+end

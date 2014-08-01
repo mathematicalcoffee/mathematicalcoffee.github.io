@@ -15,7 +15,7 @@ Here's a sample "posts list".
 
 ## To-Do
 
-- [ ] migrate rakefile to `_templates`
+- [x] migrate rakefile to `_templates`
 - [x] **Big todo: handleize/handle filter appear not to work**
 - [ ] RSS feeds and also per category (per label?)
     * [x] links in HTML header to atom/rss (autodiscovery)
