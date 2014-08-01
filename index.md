@@ -15,22 +15,13 @@ Here's a sample "posts list".
 
 ## To-Do
 
-- [x] migrate rakefile to `_templates`
-- [x] **Big todo: handleize/handle filter appear not to work**
-- [ ] RSS feeds and also per category (per label?)
-    * [x] links in HTML header to atom/rss (autodiscovery)
-    * [x] subscribe button somewhere
-- [x] atom /feeds/atom.xml
-- [ ] support different published and updated fields, also in the RSS ('rake touch', or 'rake build' will update to last-modified)
 - [ ] google analytics
-- [x] sidebar widget configuration in `_config.yml`
+- [ ] support different published and updated fields, also in the RSS ('rake touch', or 'rake build' will update to last-modified)
 - [ ] remove obscene amounts of whitespace between tags https://github.com/penibelst/jekyll-compress-html
     * [ ] respace out liquid for readability.
 - [ ] get custom CSS: http://getbootstrap.com/customize/
 - [ ] use modals for popups for social bar
 - [ ] use same code for post layout in post page and blog listing page.
-- [x] post footer: likes, poster, ...
-- [x] disqus comments
 - [ ] 'follow blog' links (PLUS RSS)
 - [ ] 'like' per-post links
 - [ ] sidebar:
@@ -40,19 +31,28 @@ Here's a sample "posts list".
     - [ ] popular posts
     - [x] label cloud
 - [ ] RMD compiling
+- [ ] fix MS gradients on navbar
+- [ ] prettify seach result listings: headings only, or excerpts allowed.
+- [x] migrate rakefile to `_templates`
+- [x] **Big todo: handleize/handle filter appear not to work**
+- [x] RSS feeds and also per category (per label?)
+    * [x] links in HTML header to atom/rss (autodiscovery)
+    * [x] subscribe button somewhere
+- [x] atom /feeds/atom.xml
+- [x] sidebar widget configuration in `_config.yml`
+- [x] post footer: likes, poster, ...
+- [x] disqus comments
 - [x] fix up headings
 - [x] Colours from Awesome.inc
 - [x] navbar dropdown styling: make sure collapsing it undoes the styling
-- [ ] fix MS gradients on navbar
 - [x] sidebar styling
 - [x] hosted by github/powered by jekyll/designed with bootstrap/copyright me footer
-- [ ] searching:
-    - [ ] fulltext search (via search bar)
+- [x] searching:
+    - [stretch goal] fulltext search (via search bar)
     - [x] tags (/tag/{tag}): tag cloud or list at the end of the post
     - [x] categories (/category/{category}): category cloud or list at the end of the post
     - [x] author (/author/{author}): click author name, also about page, maybe sidebar
     - [x] date search (?) (/year/{year}, /month/{month}): from blog archive widget (?)
-- [ ] seach result listings: headings only, or excerpts allowed.
 
 ## stretch goals
 
