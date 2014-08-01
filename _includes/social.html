@@ -5,8 +5,9 @@
   <button type="button" class="btn btn-default disabled">
     Share:
   </button>
-  {% for key in site.social-post %}{% assign dat=site.data.social[key] %}
-    {% if dat and dat.share %}{% capture cache %}
+  {% for key in site.social-post %}
+    {% assign dat=site.data.social[key] %}
+    {% if dat and dat.share %}
       {% assign url=page.url | url_param_escape %}
       {% assign desc=page.title | truncate: 100 | url_param_escape %}
       {% if dat.share-personal and site.social[key] %}
@@ -14,7 +15,6 @@
       {% else %}
         {% assign href=dat.share | replace: '_URL_', url | replace: '_TEXT_', desc %}
       {% endif %}
-      {% endcapture %}{% assign cache=nil %}
   <button type="button" class="btn btn-default btn-social">
     <a 
       target="_blank"

@@ -16,8 +16,8 @@ Here's a sample "posts list".
 ## To-Do
 
 - [ ] google analytics
-- [ ] remove obscene amounts of whitespace between tags https://github.com/penibelst/jekyll-compress-html
-    * [ ] respace out liquid for readability.
+- [x] remove obscene amounts of whitespace between tags https://github.com/penibelst/jekyll-compress-html
+    * [x] respace out liquid for readability.
 - [ ] get custom CSS: http://getbootstrap.com/customize/
 - [ ] use modals for popups for social bar
 - [ ] use same code for post layout in post page and blog listing page.
@@ -57,6 +57,7 @@ Here's a sample "posts list".
 ## stretch goals
 
 - [x] try with multiple authors
+- [ ] try with many posts
 - [ ] dropdown on author-social with more social when it doesn't fit on one line.
 - [ ] text search
 

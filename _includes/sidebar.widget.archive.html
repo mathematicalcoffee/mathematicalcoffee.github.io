@@ -1,7 +1,3 @@
-<!-- Blog archive, by year then month.
-TODO: 
-- [ ] Links of years/months
-{% capture cache %}
 {% assign mm=0 %}
 {% assign yy=0 %}
 {% assign ycounts="" %}
@@ -34,12 +30,10 @@ TODO:
 {% assign ycounts = ycounts | remove_first:'|' | split:'|' %}
 {% assign yy=0 %}
 {% assign mm=0 %}
-{% if page.path contains '_posts' %}<!-- page.layout is always 'frame'... -- >
+{% if page.path contains '_posts' %}
   {% assign pageyear=page.date | date:"%Y" %}
   {% assign pagemonth=page.date | date:"%B" %}
 {% endif %}
-{% endcapture %}{% assign cache=nil %}
--->
 <div class="sidebar-widget blog-archive">
 <h3>Blog archive</h3>
 <ul class="fa-ul" >

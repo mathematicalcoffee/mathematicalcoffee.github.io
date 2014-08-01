@@ -1,19 +1,26 @@
 <!-- TODO: tags are links -->
 {% if site.sidebar.cloud.what.size > 0 %}
-  {% capture cache %}
 <!-- font size = min + (max-min)*percentage of posts (px) -->
   {% assign minfont=site.sidebar.cloud.minfontsize %}
   {% assign range=site.sidebar.cloud.maxfontsize | minus: minfont %}
   {% assign nposts=site.posts.size | plus: 0.0 %} <!-- convert to float -->
-  {% endcapture %} {% assign cache=nil %}
 <div class="sidebar-widget tagcloud">
-  {% for type in site.sidebar.cloud.what %}{% if site[type].size > 0 %}
-  {% assign sing=type | replace: 'ies', 'y' | replace: 's', '' %}{% assign min=nposts %}
-  {% for ps in site[type] %}{% assign num=ps | last | size %}{% if num < min %}{% assign min=num %}{% endif %}{% endfor %}
-      <h3>{{ type | capitalize }}</h3>
-      <p>{% for cat in site[type] %}
-      <a href="/{{ sing }}/{{ cat | first}}/" style="font-size: {{ cat | last | size | minus: min | divided_by: nposts | times: range | plus: minfont }}px;">{{ cat | first }}</a>
-      {% endfor %}</p>
-  {% endif %}{% endfor %}
+  {% for type in site.sidebar.cloud.what %}
+    {% if site[type].size > 0 %}
+    {% assign sing=type | replace: 'ies', 'y' | replace: 's', '' %}
+    {% assign min=nposts %}
+    {% for ps in site[type] %}
+      {% assign num=ps | last | size %}
+      {% if num < min %}
+        {% assign min=num %}
+      {% endif %}
+    {% endfor %}
+  <h3>{{ type | capitalize }}</h3>
+  <p>
+    {% for cat in site[type] %}
+    <a href="/{{ sing }}/{{ cat | first}}/" style="font-size: {{ cat | last | size | minus: min | divided_by: nposts | times: range | plus: minfont }}px;">{{ cat | first }}</a>
+    {% endfor %}</p>
+    {% endif %}
+  {% endfor %}
 </div><!-- widget -->
 {% endif %}

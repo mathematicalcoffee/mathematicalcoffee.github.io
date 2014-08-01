@@ -4,5 +4,9 @@
     <pubDate>{{ post.date | date: "%a, %d %b %Y %H:%M:%S %z" }}</pubDate>
     <link>{{ site.url }}{{ post.url }}</link>
     <guid isPermaLink="true">{{ site.url }}{{ post.url }}</guid>
-    {% if post.authors and post.authors.size > 0 and post.authors[0].email %}<author>{{ post.authors[0].email }} ({{ post.authors[0].dislay_name }}){% if post.authors.size > 1 %} and others{% endif %}</author>{% endif %}
+    {% if post.authors and post.authors.size > 0 and post.authors[0].email %}
+    <author>{{ post.authors[0].email }} ({{ post.authors[0].dislay_name }})
+        {% if post.authors.size > 1 %} and others{% endif %}
+    </author>
+    {% endif %}
   </item>
