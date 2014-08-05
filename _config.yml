@@ -97,7 +97,7 @@ pagination: 5
 markdown: kramdown
 kramdown:
     input: GFM
-pygments: true
+highlighter: pygments
 relative_permalinks: false
 permalink: /:year/:month/:day/:title
 

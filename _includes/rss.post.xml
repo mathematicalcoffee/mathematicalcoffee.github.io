@@ -1,7 +1,7 @@
   <item>
     <title>{{ post.title | xml_escape }}</title>
     <description>{{ post.content | xml_escape }}</description>
-    <pubDate>{{ post.date | date: "%a, %d %b %Y %H:%M:%S %z" }}</pubDate>
+    <pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
     <link>{{ site.url }}{{ post.url }}</link>
     <guid isPermaLink="true">{{ site.url }}{{ post.url }}</guid>
     {% if post.authors and post.authors.size > 0 and post.authors[0].email %}
