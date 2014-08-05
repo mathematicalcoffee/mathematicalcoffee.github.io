@@ -97,6 +97,7 @@ pagination: 5
 markdown: kramdown
 kramdown:
     input: GFM
+    hard_wrap: false
 highlighter: pygments
 relative_permalinks: false
 permalink: /:year/:month/:day/:title

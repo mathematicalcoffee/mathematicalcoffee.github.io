@@ -13,22 +13,11 @@ Here's a sample "posts list".
   {% endfor %}
 </ul>
 
-The heading for the blog title is styled differently.
-Here is what the other headings look like.
-
-Why are the following on separate lines with br in between???
-
-Test
-One
-Two  
-Three
-
 ## To-Do
 
 - [ ] site.title not site.name?
 - [ ] google analytics
 - [ ] Jekyll 2.0 now supported on gh-pages: use bootstrap-sass rather than css?
-- [ ] **big todo**: newline in file seems to be treated as `<br />`?
 - [ ] get custom CSS: http://getbootstrap.com/customize/
 - [ ] use modals for popups for social
 - [ ] 'follow blog' links (PLUS RSS)
@@ -42,6 +31,7 @@ Three
 - [ ] RMD compiling
 - [ ] fix MS gradients on navbar
 - [ ] prettify seach result listings: headings only, or excerpts allowed.
+- [x] **big todo**: newline in file seems to be treated as `<br />`? (if I turn off GFM then it's fine)
 - [x] use same code for post layout in post page and blog listing page.
 - [x] remove obscene amounts of whitespace between tags https://github.com/penibelst/jekyll-compress-html
     * [x] respace out liquid for readability.
