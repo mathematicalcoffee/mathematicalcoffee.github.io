@@ -1,0 +1,46 @@
+  <h2 class='date-header'>{{ post.date | date_to_string }}</h2>
+  <div class='blog-post'>
+    <h1 class='title'><a href="{{ post.url }}">{{ post.title }}</a></h1>
+    {{ post.content  | markdownify }}
+    <!-- TODO: posted by <uname> at <time>. Link to comments. like bar. labels. -->
+    <div class='post-footer'>
+    <p>
+    {% include social.html %}
+    {% if post.updated %}
+      Last updated {{ post.updated | date: '%A, %d %B %Y at %H:%M' }}<br />
+    {% endif %}
+    {% if post.authors and post.authors.size > 0 %}
+      {% assign tmp=post.authors.size | minus: 1 %}
+      Posted by
+      {% for k in post.authors %}
+        {% assign a=site.authors[k] %}
+        <a href="/author/{{ a.handle }}/">{{ a.display_name }}</a>
+        {% unless post.authors.size == 1 or forloop.last %}
+          {% if forloop.index == tmp %} and{% else %},{% endif %}
+        {% endunless %}
+      {% endfor %}
+    {% else %}
+      Posted
+    {% endif %}
+    on 
+    {% assign dd = post.date | date: '%A, %d %B %Y at %H:%M' %}
+    {% if dd contains 'at 00:00' %}
+      {{ post.date | date: '%A, %d %B %Y' }}
+    {% else %}
+      {{ dd }}
+    {% endif %}
+    <br />
+    {% if post.categories and post.categories.size > 0 %}
+      Categories:
+      {% for c in post.categories %}<a href="/category/{{ c }}/">{{ c }}</a>{% endfor %}
+    {% endif %}<br />
+    {% if post.tags and post.tags.size > 0 %}
+      Tags:
+      {% for t in post.tags %}<a href="/tag/{{ t }}/">{{ t }}</a>{% endfor %}
+    {% endif %}<br />
+    </p>
+    {% if post.comments and site.disqus_shortname %}
+      {% include disqus.html %}
+    {% endif %}
+    </div>
+  </div>
