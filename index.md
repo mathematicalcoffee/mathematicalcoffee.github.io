@@ -13,12 +13,16 @@ Here's a sample "posts list".
   {% endfor %}
 </ul>
 
+One
+Two  
+Three
+
 ## To-Do
 
 - [ ] site.title not site.name?
 - [ ] google analytics
 - [ ] Jekyll 2.0 now supported on gh-pages: use bootstrap-sass rather than css?
-- [ ] listing of /all/ posts?
+- [ ] listing of *all* posts?
 - [ ] get custom CSS: http://getbootstrap.com/customize/
 - [ ] use modals for popups for social
 - [ ] 'follow blog' links (PLUS RSS)
@@ -60,6 +64,19 @@ Here's a sample "posts list".
     - [x] date search (?) (/year/{year}, /month/{month}): from blog archive widget (?)
 - [x] 'rake edit_post' to refresh the 'updated' field of metadata to the current time.
 
+Markdown problems: I want
+
+* fenced code blocks with three-backtick style,
+* double-space-for-newline (the default), and `hard_wrap` **off** (`hard_wrap` converts newlines in paragraphs to `br`),
+
+Now, **kramdown** does not support three-backtick style unless you turn github-flavoured-markdown on. This turns `hard_wrap` on by default, so I turn that off. However, then a double space is no longer converted to a newline (a bug I believe, [I reported it](https://github.com/gettalong/kramdown/issues/152)). So, cannot use kramdown.
+
+Hence I'm using redcarpet. (Note: oddity with markdown (not nec. redcarpet): comment tag has to be on newline or it gets parsed literally. And you're left with another newline from the tag itself so it can cause unintended paragraphs)).
+
+**Maruku** is deprecated.
+
+**rdiscount** ?
+
 ## stretch goals
 
 - [x] try with multiple authors
@@ -69,7 +86,7 @@ Here's a sample "posts list".
 
 Comments, BASE_PATH for github:
 
-http://jekyllbootstrap.com/usage/blog-configuration.html
+<http://jekyllbootstrap.com/usage/blog-configuration.html>
 
 ```
 git checkout skellington
