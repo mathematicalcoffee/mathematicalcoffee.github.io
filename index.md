@@ -13,12 +13,9 @@ Here's a sample "posts list".
   {% endfor %}
 </ul>
 
-One
-Two  
-Three
-
 ## To-Do
 
+- [ ] sort tag-cloud by frequency (and cap the maximum number)
 - [ ] site.title not site.name?
 - [ ] google analytics
 - [ ] Jekyll 2.0 now supported on gh-pages: use bootstrap-sass rather than css?
