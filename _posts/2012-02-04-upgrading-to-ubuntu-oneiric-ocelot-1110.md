@@ -1,11 +1,11 @@
 ---
 layout:   post
 title:    "Upgrading to Ubuntu Oneiric Ocelot 11.10 - Argh!"
-date:     2012-02-04 23:23
+date:     2012-02-04 23:23 +1000
 comments: true
 categories: ~
-tags: oneiric,ubuntu
-authors: [mathematical.coffee]
+tags: [oneiric, ubuntu]
+authors: [amy]
 ---
 ### Upgrading to Ubuntu Oneiric Ocelot 11.10 - Argh!
 

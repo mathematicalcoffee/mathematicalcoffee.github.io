@@ -1,11 +1,11 @@
 ---
 layout:   post
 title:    "Installing RStudio Server on Fedora 18"
-date:     2013-04-17 18:38
+date:     2013-04-17 18:38 +1000
 comments: true
 categories: ~
-tags: fedora,R,RStudio
-authors: [mathematical.coffee]
+tags: [fedora, R, RStudio]
+authors: [amy]
 ---
 ### Installing RStudio Server on Fedora 18
 

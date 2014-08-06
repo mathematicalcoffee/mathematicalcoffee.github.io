@@ -1,11 +1,11 @@
 ---
 layout:   post
 title:    "Automatically undecorate maximised windows in GNOME Shell"
-date:     2012-05-13 19:32
+date:     2012-05-13 19:32 +1000
 comments: true
 categories: ~
-tags: gnome,GNOME 3.2,GNOME 3.4,gnome-shell,gnome-shell-extension,maximised,undecorate,window
-authors: [mathematical.coffee]
+tags: [gnome, GNOME 3.2, GNOME 3.4, gnome-shell, gnome-shell-extension, maximised, undecorate, window]
+authors: [amy]
 ---
 ### Automatically undecorate maximised windows in GNOME Shell
 

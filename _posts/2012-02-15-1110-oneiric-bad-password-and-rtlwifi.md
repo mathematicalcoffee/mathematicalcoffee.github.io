@@ -1,11 +1,11 @@
 ---
 layout:   post
 title:    "11.10 Oneiric: "Bad password" and rtlwifi"
-date:     2012-02-15 04:02
+date:     2012-02-15 04:02 +1000
 comments: true
 categories: ~
-tags: oneiric,realtek,rtlwifi,ubuntu,wifi
-authors: [mathematical.coffee]
+tags: [oneiric, realtek, rtlwifi, ubuntu, wifi]
+authors: [amy]
 ---
 ### 11.10 Oneiric: "Bad password" and rtlwifi
 

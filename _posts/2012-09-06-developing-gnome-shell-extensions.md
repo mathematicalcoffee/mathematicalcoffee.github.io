@@ -1,11 +1,11 @@
 ---
 layout:   post
 title:    "Developing GNOME shell extensions: finding documentation part 1"
-date:     2012-09-06 19:16
+date:     2012-09-06 19:16 +1000
 comments: true
 categories: ~
-tags: developing,gnome-shell-extension,tutorial
-authors: [mathematical.coffee]
+tags: [developing, gnome-shell-extension, tutorial]
+authors: [amy]
 ---
 ### Developing GNOME shell extensions: finding documentation part 1
 

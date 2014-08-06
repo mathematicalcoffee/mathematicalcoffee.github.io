@@ -1,11 +1,11 @@
 ---
 layout:   post
 title:    "Sending notifications in GNOME shell"
-date:     2012-11-29 18:26
+date:     2012-11-29 18:26 +1000
 comments: true
 categories: ~
-tags: code,GNOME 3.2,GNOME 3.4,gnome-shell,GNOME3.6,javascript,tutorial
-authors: [mathematical.coffee]
+tags: [code, GNOME 3.2, GNOME 3.4, gnome-shell, GNOME3.6, javascript, tutorial]
+authors: [amy]
 ---
 ### Sending notifications in GNOME shell
 

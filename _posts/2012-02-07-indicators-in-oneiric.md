@@ -1,11 +1,11 @@
 ---
 layout:   post
 title:    "Indicators in Oneiric"
-date:     2012-02-07 20:22
+date:     2012-02-07 20:22 +1000
 comments: true
 categories: ~
-tags: oneiric,ubuntu
-authors: [mathematical.coffee]
+tags: [oneiric, ubuntu]
+authors: [amy]
 ---
 ### Indicators in Oneiric
 

@@ -1,11 +1,11 @@
 ---
 layout:   post
 title:    "Solar Eclipse, Cairns 2012"
-date:     2012-11-14 04:51
+date:     2012-11-14 04:51 +1000
 comments: true
 categories: ~
-tags: leisure,personal,random,solar eclipse
-authors: [mathematical.coffee]
+tags: [leisure, personal, random, solar eclipse]
+authors: [amy]
 ---
 ### Solar Eclipse, Cairns 2012
 

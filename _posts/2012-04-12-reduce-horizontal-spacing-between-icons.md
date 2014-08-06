@@ -1,11 +1,11 @@
 ---
 layout:   post
 title:    "Reduce horizontal spacing between icons in GNOME 3.2"
-date:     2012-04-12 23:34
+date:     2012-04-12 23:34 +1000
 comments: true
 categories: ~
-tags: gnome,gnome-shell
-authors: [mathematical.coffee]
+tags: [gnome, gnome-shell]
+authors: [amy]
 ---
 ### Reduce horizontal spacing between icons in GNOME 3.2
 

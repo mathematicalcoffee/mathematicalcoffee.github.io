@@ -1,11 +1,11 @@
 ---
 layout:   post
 title:    "First tweaks to Oneiric Unity"
-date:     2012-02-07 16:31
+date:     2012-02-07 16:31 +1000
 comments: true
 categories: ~
-tags: oneiric,ubuntu
-authors: [mathematical.coffee]
+tags: [oneiric, ubuntu]
+authors: [amy]
 ---
 ### First tweaks to Oneiric Unity
 

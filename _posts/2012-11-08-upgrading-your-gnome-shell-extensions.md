@@ -1,11 +1,11 @@
 ---
 layout:   post
 title:    "Upgrading your GNOME shell extensions from 3.4 to 3.6"
-date:     2012-11-08 17:07
+date:     2012-11-08 17:07 +1000
 comments: true
 categories: ~
-tags: code,developing,GNOME 3.4,gnome-shell-extension,GNOME3.6
-authors: [mathematical.coffee]
+tags: [code, developing, GNOME 3.4, gnome-shell-extension, GNOME3.6]
+authors: [amy]
 ---
 ### Upgrading your GNOME shell extensions from 3.4 to 3.6
 

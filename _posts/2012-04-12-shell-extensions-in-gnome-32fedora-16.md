@@ -1,11 +1,11 @@
 ---
 layout:   post
 title:    "Shell Extensions in Gnome 3.2/Fedora 16"
-date:     2012-04-12 20:29
+date:     2012-04-12 20:29 +1000
 comments: true
 categories: ~
-tags: fedora,gnome,gnome-shell
-authors: [mathematical.coffee]
+tags: [fedora, gnome, gnome-shell]
+authors: [amy]
 ---
 ### Shell Extensions in Gnome 3.2/Fedora 16
 

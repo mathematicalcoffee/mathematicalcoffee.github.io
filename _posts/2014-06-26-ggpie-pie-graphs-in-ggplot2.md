@@ -1,11 +1,11 @@
 ---
 layout:   post
 title:    "ggpie: pie graphs in ggplot2"
-date:     2014-06-26 00:27
+date:     2014-06-26 00:27 +1000
 comments: true
 categories: ~
-tags: code,ggplot2,R
-authors: [mathematical.coffee]
+tags: [code, ggplot2, R]
+authors: [amy]
 ---
 ### ggpie: pie graphs in ggplot2
 

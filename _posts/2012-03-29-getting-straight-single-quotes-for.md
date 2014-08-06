@@ -1,11 +1,11 @@
 ---
 layout:   post
 title:    "Getting straight single quotes for code/verbatim in Sweave/knitr"
-date:     2012-03-29 05:32
+date:     2012-03-29 05:32 +1000
 comments: true
 categories: ~
-tags: knitr,latex,R,sweave
-authors: [mathematical.coffee]
+tags: [knitr, latex, R, sweave]
+authors: [amy]
 ---
 ### Getting straight single quotes for code/verbatim in Sweave/knitr
 

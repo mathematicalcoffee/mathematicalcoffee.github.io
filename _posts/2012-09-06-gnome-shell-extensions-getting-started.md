@@ -1,11 +1,11 @@
 ---
 layout:   post
 title:    "Gnome shell extensions: Getting started writing your own"
-date:     2012-09-06 19:13
+date:     2012-09-06 19:13 +1000
 comments: true
 categories: ~
-tags: developing,gnome-shell-extension,tutorial
-authors: [mathematical.coffee]
+tags: [developing, gnome-shell-extension, tutorial]
+authors: [amy]
 ---
 ### Gnome shell extensions: Getting started writing your own
 

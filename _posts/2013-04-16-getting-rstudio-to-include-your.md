@@ -1,11 +1,11 @@
 ---
 layout:   post
 title:    "Getting RStudio to include your `R_LIBS_USER` in its library paths."
-date:     2013-04-16 19:29
+date:     2013-04-16 19:29 +1000
 comments: true
 categories: ~
-tags: knitr,R,RStudio
-authors: [mathematical.coffee]
+tags: [knitr, R, RStudio]
+authors: [amy]
 ---
 ### Getting RStudio to include your `R\_LIBS\_USER` in its library paths.
 

@@ -1,11 +1,11 @@
 ---
 layout:   post
 title:    "Tiny Crochet Despicable Me Minion"
-date:     2013-08-18 04:07
+date:     2013-08-18 04:07 +1000
 comments: true
 categories: ~
-tags: amigurumi,crochet
-authors: [mathematical.coffee]
+tags: [amigurumi, crochet]
+authors: [amy]
 ---
 ### Tiny Crochet Despicable Me Minion
 

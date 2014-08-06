@@ -1,11 +1,11 @@
 ---
 layout:   post
 title:    "R gotcha - regular expressions"
-date:     2013-05-26 18:00
+date:     2013-05-26 18:00 +1000
 comments: true
 categories: ~
-tags: code,R
-authors: [mathematical.coffee]
+tags: [code, R]
+authors: [amy]
 ---
 ### R gotcha - regular expressions
 

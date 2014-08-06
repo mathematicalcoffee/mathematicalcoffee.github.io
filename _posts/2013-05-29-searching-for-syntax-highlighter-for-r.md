@@ -1,11 +1,11 @@
 ---
 layout:   post
 title:    "Searching for a Syntax Highlighter for R"
-date:     2013-05-29 06:06
+date:     2013-05-29 06:06 +1000
 comments: true
 categories: ~
-tags: code,javascript,R
-authors: [mathematical.coffee]
+tags: [code, javascript, R]
+authors: [amy]
 ---
 ### Searching for a Syntax Highlighter for R
 
@@ -33,7 +33,7 @@ However, the script seems to support the R language only (the highlight package 
 To use [SyntaxHighlighter](http://alexgorbatchev.com/SyntaxHighlighter/):
 
 - include the script `shCore.js` and stylesheets `shCore.css`, `shThemeDefault.css`, _plus_ the script for each language you wish to syntax highlight;
-- initiate highlighting by labelling `<pre>` tags to be highlighted with `class: "brush: <language>"`, and add a call to `SyntaxHighlighter.all()`;
+- initiate highlighting by labelling `<pre>` tags to be highlighted with `class: brush: <language>`,  and add a call to `SyntaxHighlighter.all()`;
 - does not support R out of the box, but [Yihui Xie has written a language definition for it](http://yihui.name/en/2010/09/syntaxhighlighter-brush-for-the-r-language/) (regex-based).
 
 ## PrismJS

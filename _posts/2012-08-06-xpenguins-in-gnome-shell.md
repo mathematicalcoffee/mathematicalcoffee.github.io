@@ -1,11 +1,11 @@
 ---
 layout:   post
 title:    "XPenguins in GNOME shell!"
-date:     2012-08-06 18:49
+date:     2012-08-06 18:49 +1000
 comments: true
 categories: ~
-tags: GNOME 3.2,GNOME 3.4,gnome-shell,gnome-shell-extension,xpenguins
-authors: [mathematical.coffee]
+tags: [GNOME 3.2, GNOME 3.4, gnome-shell, gnome-shell-extension, xpenguins]
+authors: [amy]
 ---
 ### XPenguins in GNOME shell!
 

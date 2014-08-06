@@ -1,11 +1,11 @@
 ---
 layout:   post
 title:    "Be a NethackR!"
-date:     2012-03-07 22:28
+date:     2012-03-07 22:28 +1000
 comments: true
 categories: ~
-tags: games,R
-authors: [mathematical.coffee]
+tags: [games, R]
+authors: [amy]
 ---
 ### Be a NethackR!
 

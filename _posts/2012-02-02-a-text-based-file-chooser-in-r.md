@@ -1,11 +1,11 @@
 ---
 layout:   post
 title:    "A text-based file chooser in R"
-date:     2012-02-02 22:24
+date:     2012-02-02 22:24 +1000
 comments: true
 categories: ~
-tags: code,R
-authors: [mathematical.coffee]
+tags: [code, R]
+authors: [amy]
 ---
 ### A text-based file chooser in R
 

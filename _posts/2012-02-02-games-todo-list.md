@@ -1,11 +1,11 @@
 ---
 layout:   post
 title:    "Games todo list!"
-date:     2012-02-02 22:57
+date:     2012-02-02 22:57 +1000
 comments: true
 categories: ~
-tags: games
-authors: [mathematical.coffee]
+tags: [games]
+authors: [amy]
 ---
 ### Games todo list!
 

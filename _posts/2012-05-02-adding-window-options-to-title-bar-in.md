@@ -1,11 +1,11 @@
 ---
 layout:   post
 title:    "Adding window options to title bar in GNOME 3.2, 3.4"
-date:     2012-05-02 17:31
+date:     2012-05-02 17:31 +1000
 comments: true
 categories: ~
-tags: GNOME 3.2,GNOME 3.4,gnome-shell,gnome-shell-extension,window-options
-authors: [mathematical.coffee]
+tags: [GNOME 3.2, GNOME 3.4, gnome-shell, gnome-shell-extension, window-options]
+authors: [amy]
 ---
 ### Adding window options to title bar in GNOME 3.2, 3.4
 

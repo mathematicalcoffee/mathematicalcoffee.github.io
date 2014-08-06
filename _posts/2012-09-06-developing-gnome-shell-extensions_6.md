@@ -1,11 +1,11 @@
 ---
 layout:   post
 title:    "Developing GNOME shell extensions: finding documentation part 2"
-date:     2012-09-06 19:28
+date:     2012-09-06 19:28 +1000
 comments: true
 categories: ~
-tags: developing,gir,gnome-shell-extension,tutorial,typelib
-authors: [mathematical.coffee]
+tags: [developing, gir, gnome-shell-extension, tutorial, typelib]
+authors: [amy]
 ---
 ### Developing GNOME shell extensions: finding documentation part 2
 

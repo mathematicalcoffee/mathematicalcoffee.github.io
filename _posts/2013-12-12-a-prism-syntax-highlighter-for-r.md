@@ -1,11 +1,11 @@
 ---
 layout:   post
 title:    "A Prism Syntax Highlighter for R"
-date:     2013-12-12 18:16
+date:     2013-12-12 18:16 +1000
 comments: true
 categories: ~
-tags: code,R
-authors: [mathematical.coffee]
+tags: [code, R]
+authors: [amy]
 ---
 ### A Prism Syntax Highlighter for R
 
@@ -46,7 +46,7 @@ Any R code you want to be syntax highlighted should have `class="language-r"` on
 
 Et Voila!
 
-**Update:** There is a [**known issue**](http://bl.ocks.org/mathematicalcoffee/raw/5655496/index.html#known-issue) whereby hash tags within strings will be highlighted as comments. There are a number of workarounds mentioned in the link, though each has a use that will break it (regex-based highlighters always have these problems).
+**Update:** There is a [**known issue**](http://bl.ocks.org/mathematicalcoffee/raw/5655496/index.html#known-issue) whereby hash tags within strings will be highlighted as comments. There are a number of workarounds mentioned in the link,  though each has a use that will break it (regex-based highlighters always have these problems).
 
 You can [view my gist via bl.ocks.org](http://bl.ocks.org/mathematicalcoffee/raw/5655496/) to see a larger code snippet, and play around with a few themes I modified to make the R look pretty: Okaidia (the one from PrismJS), Zenburn (based off the vim theme by [Jami Nurminen](http://slinky.imukuppi.org/zenburnpage/)), and Tomorrow Night 80s (like the one from RStudio, by [Chris Kempson](https://github.com/chriskempson/tomorrow-theme)). I'm using Tomorrow Night 80s on my blog.
 

@@ -1,11 +1,11 @@
 ---
 layout:   post
 title:    "Junethack 2014 is over!"
-date:     2014-07-13 19:48
+date:     2014-07-13 19:48 +1000
 comments: true
 categories: ~
-tags: games,junethack,nethack
-authors: [mathematical.coffee]
+tags: [games, junethack, nethack]
+authors: [amy]
 ---
 ### Junethack 2014 is over!
 

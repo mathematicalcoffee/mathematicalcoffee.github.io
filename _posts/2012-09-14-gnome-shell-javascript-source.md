@@ -1,11 +1,11 @@
 ---
 layout:   post
 title:    "GNOME shell: Javascript Source Documentation (extensions development)"
-date:     2012-09-14 05:39
+date:     2012-09-14 05:39 +1000
 comments: true
 categories: ~
-tags: code,developing,gnome-shell,gnome-shell-extension,javascript,tutorial
-authors: [mathematical.coffee]
+tags: [code, developing, gnome-shell, gnome-shell-extension, javascript, tutorial]
+authors: [amy]
 ---
 ### GNOME shell: Javascript Source Documentation (extensions development)
 
