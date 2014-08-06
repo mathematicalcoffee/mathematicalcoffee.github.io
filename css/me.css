@@ -1,3 +1,6 @@
+---
+layout: compress
+---
 /* Heavily based off an Awesome, Inc. blogger template */
 /* Should customise my own CSS http://bootswatchr.com/create#!/edit/a22beb86
  * White: #ffffff;
@@ -155,6 +158,7 @@ h1.title a:hover {
 /* page header */
 .page-header {
     border: none;
+    {% if site.subscribe-header.size > 0 %}margin-bottom: 0px;{% endif %}
 }
 .page-header h1 {
     color: #8ce1f5;

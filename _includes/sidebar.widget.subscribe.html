@@ -1,0 +1,17 @@
+{% if site.sidebar.subscribe.size > 0 %}
+<div class="sidebar-widget subscribe">
+  <h3>Subscribe</h3>
+  <p>Be notified about the latest posts.</p>
+    {% for key in site.sidebar.subscribe %}
+      {% assign dat=site.data.social[key] %}
+      {% if dat and dat.profile %}
+    <a target="_blank"
+      href="{{ dat.profile | replace: '_USER_', site.social[key] }}"
+      title="On {{ dat.name }}">
+      <span class="fa {{ dat.icon }} fa-fw"></span>{{ dat.name }}
+    </a>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+{% endif %}

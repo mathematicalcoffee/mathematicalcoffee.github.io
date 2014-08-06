@@ -1,9 +1,13 @@
 <author>
-    {% if author.display_name %}
+  {% if author.display_name %}
     <name>{{ author.display_name | xml_escape }}</name>
-    {% if author.email %}<email>{{ author.email | xml_escape }}</email>{% endif %}
-    {% if author.web %}<uri>{{ author.web | xml_escape }}</uri>{% endif %}
-    {% else %}{% comment %}author with no key in config.yml{% endcomment %}
-    <name>{{ author }}</name>
+    {% if author.email %}
+    <email>{{ author.email | xml_escape }}</email>
     {% endif %}
+    {% if author.web %}
+    <uri>{{ author.web | xml_escape }}</uri>
+    {% endif %}
+  {% else %}{% comment %}author with no key in config.yml{% endcomment %}
+    <name>{{ author }}</name>
+  {% endif %}
 </author>

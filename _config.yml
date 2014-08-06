@@ -25,15 +25,19 @@ disqus_shortname: EDITME
 social: # site accounts as opposed to author accounts (only twitter used for 'share via')
     twitter: mathematicoffee
 
+# should we put subscribe links in the header? if so, what?
+# Options: anything in site.social (e.g. twitter) and atom, rss.
+subscribe-header: [rss, atom, twitter]
+
 # for each post, what social share widgets do you want? (see _data/social.yml, needs
 # 'share' entry)
 social-post: [twitter, facebook, googleplus, pinterest]
 
 # What to put into the right-hand sidebar.
 sidebar:
-    # available widgets: about, archive, cloud
+    # available widgets: about, archive, cloud, subscribe
     # they appear in the order you list.
-    widgets: [archive, about, cloud]
+    widgets: [archive, about, cloud, subscribe]
     # --- configuration of widgets ---
     # about me sidebar widget configuration
     about:
@@ -52,6 +56,10 @@ sidebar:
         # maximum font size for tags? basically tweak-and-see
         # it will never quite be reached.
         maxfontsize: 30
+    # subscribe links. what to list. Options:
+    # - anything in site.social (e.g. twitter)
+    # - rss and atom
+    subscribe: [rss, atom, twitter]
 
 # ------ JEKYLL CONFIGURATION ------ #
 pagination: 5

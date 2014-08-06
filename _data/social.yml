@@ -36,3 +36,11 @@ email:
   name: Email
   profile: 'mailto:_USER_'
   icon: fa-envelope
+rss:
+  name: RSS
+  profile: '{{site.url}}/feeds/rss.xml'
+  icon: fa-rss  
+atom:
+  name: Atom
+  profile: '{{site.url}}/feeds/atom.xml'
+  icon: fa-rss  

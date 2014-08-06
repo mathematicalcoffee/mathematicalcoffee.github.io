@@ -1,5 +1,5 @@
 ---
-layout: none
+layout: compress
 permalink: /feeds/rss/%{category}.xml
 ---
 <?xml version="1.0" encoding="UTF-8"?>
@@ -10,6 +10,7 @@ permalink: /feeds/rss/%{category}.xml
         <link>{{ site.url }}</link>
         <atom:link href="{{ site.url }}{{ page.url }}" rel="self" type="application/rss+xml" />
         {% for post in site.categories['%{category}'] limit:20 %}
-        {% include rss.post.xml %}{% endfor %}
+          {% include rss.post.xml %}
+        {% endfor %}
     </channel>
 </rss>
