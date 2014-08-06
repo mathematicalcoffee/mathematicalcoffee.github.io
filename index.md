@@ -15,12 +15,11 @@ Here's a sample "posts list".
 
 ## To-Do
 
+- [ ] site.title not site.name?
 - [ ] google analytics
-- [x] remove obscene amounts of whitespace between tags https://github.com/penibelst/jekyll-compress-html
-    * [x] respace out liquid for readability.
+- [ ] Jekyll 2.0 now supported on gh-pages: use bootstrap-sass rather than css?
 - [ ] get custom CSS: http://getbootstrap.com/customize/
-- [ ] use modals for popups for social bar
-- [ ] use same code for post layout in post page and blog listing page.
+- [ ] use modals for popups for social
 - [ ] 'follow blog' links (PLUS RSS)
 - [ ] 'like' per-post links
 - [ ] sidebar:
@@ -32,11 +31,17 @@ Here's a sample "posts list".
 - [ ] RMD compiling
 - [ ] fix MS gradients on navbar
 - [ ] prettify seach result listings: headings only, or excerpts allowed.
+- [x] **big todo**: newline in file seems to be treated as `<br />`? (if I turn off GFM then it's fine)
+- [x] use same code for post layout in post page and blog listing page.
+- [x] remove obscene amounts of whitespace between tags https://github.com/penibelst/jekyll-compress-html
+    * [x] respace out liquid for readability.
+- [x] use `where` filter in templates: `site.posts | where: "graduation_year", "2014"` ? (can't: only for `property == value`, not for `property contains value`)
 - [x] migrate rakefile to `_templates`
 - [x] **Big todo: handleize/handle filter appear not to work**
 - [x] RSS feeds and also per category (per label?)
     * [x] links in HTML header to atom/rss (autodiscovery)
     * [x] subscribe button somewhere
+- [x] update RSS to use filter date_to_rfc822
 - [x] atom /feeds/atom.xml
 - [x] sidebar widget configuration in `_config.yml`
 - [x] post footer: likes, poster, ...

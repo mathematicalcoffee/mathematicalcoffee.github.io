@@ -19,18 +19,7 @@ http://rsms.me/
 
 {% for post in site.posts %}
   {% if forloop.index < page.full_posts %}
-
-  <h2 class='date-header'>{{ post.date | date: '%d %B %Y'}}</h2>
-  <div class='blog-post'>
-    <h1 class='title'><a href='{{post.url}}'>{{ post.title }}</a></h1>
-    {{ post.content }}
-    <!-- TODO: posted by <uname> at <time>. Link to comments. like bar. labels. -->
-    {% if post.comments %}
-    <div class='post-footer'>
-         <span class="fa fa-comment"></span> <a href="{{post.url}}#disqus_thread">Comments</a>
-    </div>
-    {% endif %}
-  </div>
+    {% include post.single.html %}
   {% else %}
     {% if forloop.index == page.full_posts %}
     <!-- post listing -->
