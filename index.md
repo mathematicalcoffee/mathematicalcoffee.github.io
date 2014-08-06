@@ -18,6 +18,7 @@ Here's a sample "posts list".
 - [ ] site.title not site.name?
 - [ ] google analytics
 - [ ] Jekyll 2.0 now supported on gh-pages: use bootstrap-sass rather than css?
+- [ ] listing of /all/ posts?
 - [ ] get custom CSS: http://getbootstrap.com/customize/
 - [ ] use modals for popups for social
 - [ ] 'follow blog' links (PLUS RSS)
