@@ -1,25 +1,37 @@
-<!-- TODO: tags are links -->
 {% if site.sidebar.cloud.what.size > 0 %}
 <!-- font size = min + (max-min)*percentage of posts (px) -->
   {% assign minfont=site.sidebar.cloud.minfontsize %}
   {% assign range=site.sidebar.cloud.maxfontsize | minus: minfont %}
   {% assign nposts=site.posts.size | plus: 0.0 %} <!-- convert to float -->
+  {% assign npercat='|' %}
 <div class="sidebar-widget tagcloud">
   {% for type in site.sidebar.cloud.what %}
     {% if site[type].size > 0 %}
-    {% assign sing=type | replace: 'ies', 'y' | replace: 's', '' %}
-    {% assign min=nposts %}
-    {% for ps in site[type] %}
-      {% assign num=ps | last | size %}
-      {% if num < min %}
-        {% assign min=num %}
-      {% endif %}
-    {% endfor %}
-  <h3>{{ type | capitalize }}</h3>
-  <p>
-    {% for cat in site[type] %}
-    <a href="/{{ sing }}/{{ cat | first}}/" style="font-size: {{ cat | last | size | minus: min | divided_by: nposts | times: range | plus: minfont }}px;">{{ cat | first }}</a>
-    {% endfor %}</p>
+      {% assign sing=type | replace: 'ies', 'y' | replace: 's', '' %}
+      {% assign min=nposts %}
+      {% for ps in site[type] %}
+        {% assign num=ps | last | size %}
+        {% assign stupid='|' | append: num | append: '|' %}
+        {% unless npercat contains stupid %}
+          {% assign npercat = npercat | append: num | append: '|' %}
+        {% endunless %}
+        {% if num < min %}
+          {% assign min=num %}
+        {% endif %}
+      {% endfor %}
+      {% assign npercat = npercat | replace_first: '|', '' | replace_last: '|', '' | split: '|' | sort %}
+       <h3>{{ type | capitalize }} {{npercat}}</h3>
+    <p>
+      {% for n in npercat reversed %}
+        {% assign n = n | plus: 0 %}
+        {% for cat in site[type] %}
+          {% assign num=cat | last | size %}
+          {% if num == n %}<!-- Y U NO WORK -->
+          <a href="/{{ sing }}/{{ cat | first}}/" style="font-size: {{ num | minus: min | divided_by: nposts | times: range | plus: minfont }}px;">{{ cat | first }}</a>
+          {% endif %}
+        {% endfor %}
+      {% endfor %}
+    </p>
     {% endif %}
   {% endfor %}
 </div><!-- widget -->
