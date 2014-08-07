@@ -3,10 +3,10 @@
   {% assign minfont=site.sidebar.cloud.minfontsize %}
   {% assign range=site.sidebar.cloud.maxfontsize | minus: minfont %}
   {% assign nposts=site.posts.size | plus: 0.0 %} <!-- convert to float -->
-  {% assign npercat='|' %}
 <div class="sidebar-widget tagcloud">
   {% for type in site.sidebar.cloud.what %}
     {% if site[type].size > 0 %}
+      {% assign npercat='|' %}
       {% assign sing=type | replace: 'ies', 'y' | replace: 's', '' %}
       {% assign min=nposts %}
       {% for ps in site[type] %}
@@ -20,13 +20,13 @@
         {% endif %}
       {% endfor %}
       {% assign npercat = npercat | replace_first: '|', '' | replace_last: '|', '' | split: '|' | sort %}
-       <h3>{{ type | capitalize }} {{npercat}}</h3>
+       <h3>{{ type | capitalize }}</h3>
     <p>
       {% for n in npercat reversed %}
-        {% assign n = n | plus: 0 %}
         {% for cat in site[type] %}
-          {% assign num=cat | last | size %}
-          {% if num == n %}<!-- Y U NO WORK -->
+        {% comment %}For some reason `num` has to be a string or they won't be equal, even if you try coerce `n` to an int...{% endcomment %}
+          {% assign num=cat | last | size | append: '' %}
+          {% if num == n %}
           <a href="/{{ sing }}/{{ cat | first}}/" style="font-size: {{ num | minus: min | divided_by: nposts | times: range | plus: minfont }}px;">{{ cat | first }}</a>
           {% endif %}
         {% endfor %}
