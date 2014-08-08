@@ -1,6 +1,6 @@
 ---
 layout:   post
-title:    "11.10 Oneiric: "Bad password" and rtlwifi"
+title:    "Ubuntu 11.10 Oneiric: \"Bad password\" and rtlwifi"
 date:     2012-02-15 04:02 +1000
 comments: true
 categories: ~
