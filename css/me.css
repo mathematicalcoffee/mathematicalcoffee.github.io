@@ -77,6 +77,9 @@ body {
 .blog-archive ul.fa-ul {
     margin-left: 1.25em;
 }
+.blog-archive ul.fa-ul.innermost {
+    margin-left: 0px;
+}
 .blog-archive ul.fa-ul li a[data-toggle]+a {
     vertical-align: middle;
 }
@@ -102,8 +105,16 @@ body {
     color: #fff;
 }
 .blog-archive li.blog-archive-post > a:before {
-    content: '';
-    margin:0 5px 0 -15px;
+    font-family: 'FontAwesome';
+    color: white;
+    content: '\f101';
+    margin:0 5px 0 0px;
+}
+
+.blog-archive li.blog-archive-post {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 /* social */

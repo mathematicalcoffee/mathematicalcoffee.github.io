@@ -15,7 +15,6 @@ Here's a sample "posts list".
 
 ## To-Do
 
-- [ ] sort tag-cloud by frequency (and cap the maximum number)
 - [ ] site.title not site.name?
 - [ ] google analytics
 - [ ] Jekyll 2.0 now supported on gh-pages: use bootstrap-sass rather than css?
@@ -33,6 +32,7 @@ Here's a sample "posts list".
 - [ ] RMD compiling
 - [ ] fix MS gradients on navbar
 - [ ] prettify seach result listings: headings only, or excerpts allowed.
+- [x] sort tag-cloud by frequency (and cap the maximum number)
 - [x] **big todo**: newline in file seems to be treated as `<br />`? (if I turn off GFM then it's fine)
 - [x] use same code for post layout in post page and blog listing page.
 - [x] remove obscene amounts of whitespace between tags https://github.com/penibelst/jekyll-compress-html
