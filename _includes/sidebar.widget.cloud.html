@@ -22,14 +22,18 @@
       {% assign npercat = npercat | replace_first: '|', '' | replace_last: '|', '' | split: '|' | sort %}
        <h3>{{ type | capitalize }}</h3>
     <p>
+    {% assign nlabels=0 %}
       {% for n in npercat reversed %}
-        {% for cat in site[type] %}
-        {% comment %}For some reason `num` has to be a string or they won't be equal, even if you try coerce `n` to an int...{% endcomment %}
-          {% assign num=cat | last | size | append: '' %}
-          {% if num == n %}
-          <a href="/{{ sing }}/{{ cat | first}}/" style="font-size: {{ num | minus: min | divided_by: nposts | times: range | plus: minfont }}px;">{{ cat | first }}</a>
-          {% endif %}
-        {% endfor %}
+        {% if nlabels < site.sidebar.cloud.maxtags %}
+          {% for cat in site[type] %}
+          {% comment %}For some reason `num` has to be a string or they won't be equal, even if you try coerce `n` to an int...{% endcomment %}
+            {% assign num=cat | last | size | append: '' %}
+            {% if num == n and nlabels < site.sidebar.cloud.maxtags %}
+              {% assign nlabels=nlabels | plus: 1 %}
+              <a href="/{{ sing }}/{{ cat | first}}/" style="font-size: {{ num | minus: min | divided_by: nposts | times: range | plus: minfont }}px;">{{ cat | first }}</a>
+            {% endif %}
+          {% endfor %}
+        {% endif %}
       {% endfor %}
     </p>
     {% endif %}
