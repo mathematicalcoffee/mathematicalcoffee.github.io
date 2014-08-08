@@ -63,7 +63,7 @@
   {% endif %}
           <li class="blog-archive-post">
             {% if page.url == post.url %}
-            <span>{{ post.title }}</span>
+            <span class="current">{{ post.title }}</span>
             {% else %}
             <a href="{{ post.url }}">{{ post.title }}</a>
             {% endif %}

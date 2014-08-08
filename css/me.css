@@ -5,6 +5,7 @@ layout: compress
 /* Should customise my own CSS http://bootswatchr.com/create#!/edit/a22beb86
  * White: #ffffff;
  * light grey: #cccccc; (text colour for dark background)
+ * grey 40% of grey + 60% of lightgrey == #acadae (30/70: #b4b5b6)
  * light blue (blue 1): #8ce1f5
  * blue 2: #50c0fb
  * blue 3: #29aae1 (my tab bar and link colour)
@@ -95,22 +96,20 @@ body {
 .blog-archive ul.fa-ul li a[data-toggle]:not(.collapsed):after {
     content: '\f0d7'; /* caret down */
 }
-.blog-archive li.blog-archive-post > span {
-    color: #50c0fb;
+.blog-archive li.blog-archive-post > span.current {
+    color: white;
 }
-.blog-archive li.blog-archive-post > span:before {
-    font-family: 'FontAwesome';
-    margin:0 5px 0 -25px;
-    content: '\f101';
-    color: #fff;
-}
+.blog-archive li.blog-archive-post > span.current:before,
 .blog-archive li.blog-archive-post > a:before {
     font-family: 'FontAwesome';
-    color: white;
-    content: '\f101';
+    color: #acadae;
+    content: '\f101'; /* double caret right */
     margin:0 5px 0 0px;
 }
-
+.blog-archive li.blog-archive-post > span.current:before {
+    color: #8ce1f5;
+}
+/* hide overflow for too-long post titles */
 .blog-archive li.blog-archive-post {
     text-overflow: ellipsis;
     overflow: hidden;
