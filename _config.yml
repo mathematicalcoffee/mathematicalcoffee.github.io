@@ -86,6 +86,8 @@ sidebar:
         # maximum font size for tags? basically tweak-and-see
         # it will never quite be reached.
         maxfontsize: 30
+        # maximum number of tags/categories to display (good if you have heaps)
+        maxtags: 10
     # subscribe links. what to list. Options:
     # - anything in site.social (e.g. twitter)
     # - rss and atom

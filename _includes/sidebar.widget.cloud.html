@@ -1,4 +1,3 @@
-<!-- TODO: tags are links -->
 {% if site.sidebar.cloud.what.size > 0 %}
 <!-- font size = min + (max-min)*percentage of posts (px) -->
   {% assign minfont=site.sidebar.cloud.minfontsize %}
@@ -7,19 +6,36 @@
 <div class="sidebar-widget tagcloud">
   {% for type in site.sidebar.cloud.what %}
     {% if site[type].size > 0 %}
-    {% assign sing=type | replace: 'ies', 'y' | replace: 's', '' %}
-    {% assign min=nposts %}
-    {% for ps in site[type] %}
-      {% assign num=ps | last | size %}
-      {% if num < min %}
-        {% assign min=num %}
-      {% endif %}
-    {% endfor %}
-  <h3>{{ type | capitalize }}</h3>
-  <p>
-    {% for cat in site[type] %}
-    <a href="/{{ sing }}/{{ cat | first}}/" style="font-size: {{ cat | last | size | minus: min | divided_by: nposts | times: range | plus: minfont }}px;">{{ cat | first }}</a>
-    {% endfor %}</p>
+      {% assign npercat='|' %}
+      {% assign sing=type | replace: 'ies', 'y' | replace: 's', '' %}
+      {% assign min=nposts %}
+      {% for ps in site[type] %}
+        {% assign num=ps | last | size %}
+        {% assign stupid='|' | append: num | append: '|' %}
+        {% unless npercat contains stupid %}
+          {% assign npercat = npercat | append: num | append: '|' %}
+        {% endunless %}
+        {% if num < min %}
+          {% assign min=num %}
+        {% endif %}
+      {% endfor %}
+      {% assign npercat = npercat | replace_first: '|', '' | replace_last: '|', '' | split: '|' | sort %}
+       <h3>{{ type | capitalize }}</h3>
+    <p>
+    {% assign nlabels=0 %}
+      {% for n in npercat reversed %}
+        {% if nlabels < site.sidebar.cloud.maxtags %}
+          {% for cat in site[type] %}
+          {% comment %}For some reason `num` has to be a string or they won't be equal, even if you try coerce `n` to an int...{% endcomment %}
+            {% assign num=cat | last | size | append: '' %}
+            {% if num == n and nlabels < site.sidebar.cloud.maxtags %}
+              {% assign nlabels=nlabels | plus: 1 %}
+              <a href="/{{ sing }}/{{ cat | first}}/" style="font-size: {{ num | minus: min | divided_by: nposts | times: range | plus: minfont }}px;">{{ cat | first }}</a>
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+      {% endfor %}
+    </p>
     {% endif %}
   {% endfor %}
 </div><!-- widget -->
