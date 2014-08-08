@@ -15,6 +15,7 @@ Here's a sample "posts list".
 
 ## To-Do
 
+- [ ] v. slow compiling (suspect tagcloud)
 - [ ] site.title not site.name?
 - [ ] google analytics
 - [ ] Jekyll 2.0 now supported on gh-pages: use bootstrap-sass rather than css?
