@@ -59,7 +59,7 @@
       </li><!-- month -->
       <li><a {% if pagemonth != currentmonth %}class="collapsed"{% endif %} data-toggle="collapse" data-target="#collapse{{ currentmonth }}{{ currentyear }}"></span></a><a href="/{{ currentyear }}/{{ post.date | date:'%m' }}"/>{{ currentmonth }}</a>
         ({{ mcounts[mm] }}){% assign mm = mm | plus:1 %}
-        <ul class="fa-ul collapse{% if pagemonth == currentmonth %} in{% endif %}"  id="collapse{{ currentmonth }}{{ currentyear }}">
+        <ul class="fa-ul collapse{% if pagemonth == currentmonth %} in{% endif %} innermost"  id="collapse{{ currentmonth }}{{ currentyear }}">
   {% endif %}
           <li class="blog-archive-post">
             {% if page.url == post.url %}
