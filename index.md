@@ -21,7 +21,7 @@ Here's a sample "posts list".
 
 Like button:
 
-<div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false"></div>
+<div class="fb-like" data-href="http://mathematicalcoffee.blogspot.com.au/" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
 
 Note: for +1 button to fix not-clicking you need to enable some cookies: http://www.jesse-smith.net/fixed-google-plus-1-button-working/ And I assume likewise for fb.
 Maybe leave this out entirely.
