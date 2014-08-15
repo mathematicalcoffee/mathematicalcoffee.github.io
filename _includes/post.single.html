@@ -32,11 +32,11 @@
     <br />
     {% if post.categories and post.categories.size > 0 %}
       Categories:
-      {% for c in post.categories %}<a href="/category/{{ c }}/">{{ c }}</a>{% endfor %}
+      {% for c in post.categories %}<a href="/category/{{ c }}/">{{ c }}</a> {% endfor %}
     {% endif %}<br />
     {% if post.tags and post.tags.size > 0 %}
       Tags:
-      {% for t in post.tags %}<a href="/tag/{{ t }}/">{{ t }}</a>{% endfor %}
+      {% for t in post.tags %}<a href="/tag/{{ t }}/">{{ t }}</a> {% endfor %}
     {% endif %}<br />
     </p>
     {% if post.comments and site.disqus_shortname %}

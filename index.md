@@ -13,8 +13,22 @@ Here's a sample "posts list".
   {% endfor %}
 </ul>
 
+## +1 and like buttons
+
++1 button (but I can't seem to click it):
+
+<div class="g-plusone" data-size="small" data-annotation="inline" data-width="120" data-href="http://www.example.com"></div>
+
+Like button:
+
+<div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false"></div>
+
+Note: for +1 button to fix not-clicking you need to enable some cookies: http://www.jesse-smith.net/fixed-google-plus-1-button-working/ And I assume likewise for fb.
+Maybe leave this out entirely.
+
 ## To-Do
 
+- [ ] 'blog' page should not show comments but instead a link with 'x comments'.
 - [ ] v. slow compiling (suspect tagcloud)
 - [ ] site.title not site.name?
 - [ ] google analytics
@@ -22,8 +36,8 @@ Here's a sample "posts list".
 - [ ] listing of *all* posts?
 - [ ] get custom CSS: http://getbootstrap.com/customize/
 - [ ] use modals for popups for social
-- [ ] 'follow blog' links (PLUS RSS)
-- [ ] 'like' per-post links
+- [ ] 'like' and +1 per-post links
+- [ ] 'follow blog' links: like and +1 (already have rss, atom)
 - [ ] sidebar:
     - [x] post archive
     - [x] social
