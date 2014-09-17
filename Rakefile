@@ -141,7 +141,7 @@ task :authors do
 
   config['authors'].each do |key, authorhash|
     author = authorhash['display_name']
-    handle = authorhash['handle'] or get_handle(author)
+    handle = authorhash['handle'] || get_handle(author)
     filename = "#{source_dir}/#{author_dir}/#{handle}.html"
     puts "Creating page: #{filename}"
     open(filename, 'w') do |page|
