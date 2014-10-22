@@ -51,12 +51,13 @@ if [ "$#" -lt 1 ] || [ ! -f "$1" ]; then
 fi
 
 PERL=perl
-[ $replace ] && PERL="perl -i";
+
+[ "$replace" = "1" ] && PERL="perl -i"
 
 # <tt>..</tt> with `..`
 $PERL -pe 's!<tt>(.*?)</tt>!`\1`!g' "$1"
 
-if [ $fullstop ]; then
+if [ "$fullstop" = "1" ]; then
     # EXPERIMENTAL full stop with no space after
     $PERL -pe 's!\.([A-Z])!. \1 !g' "$1"
 fi
