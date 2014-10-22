@@ -15,6 +15,7 @@ Here's a sample "posts list".
 
 ## To-Do
 
+- [ ] images in lightbox
 - [ ] v. slow compiling (suspect tagcloud)
 - [ ] site.title not site.name?
 - [ ] google analytics
