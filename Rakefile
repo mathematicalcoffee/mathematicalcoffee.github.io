@@ -14,93 +14,89 @@ require "cgi"
 # rake get_handle['author'] to get the handle
 
 ## -- Misc Configs -- ##
-source_dir      = "."
-template_dir    = "_templates"
+$BASE_DIR       = "." # directory all others are relative to
+$TEMPLATE_DIR   = "_templates"
 posts_dir       = "_posts"
-new_post_ext    = "md"
+$PREFERRED_EXT  = "md"
 category_dir    = "generated/category"
 tag_dir         = "generated/tag"
 author_dir      = "generated/author"
 dateindex_dir   = "generated/date"
 feed_dir        = "generated/feeds"
 
-rss_category_template = "#{template_dir}/rss.category.xml"
-new_post_template = "#{template_dir}/post.md"
-category_index_template = "#{template_dir}/category_index.md"
-tag_index_template = "#{template_dir}/tag_index.md"
-year_index_template = "#{template_dir}/year_index.md"
-month_index_template = "#{template_dir}/month_index.md"
-author_index_template = "#{template_dir}/author_index.md"
+new_page_template = "page.md"
+rss_category_template = "rss.category.xml"
+new_post_template = "post.md"
+category_index_template = "category_index.md"
+tag_index_template = "tag_index.md"
+year_index_template = "year_index.md"
+month_index_template = "month_index.md"
+author_index_template = "author_index.md"
 
 config_yml      = "_config.yml"
 
-# usage: rake new_post[my-new-post] or rake new_post['my new post'] or rake new_post (defaults to "new-post")
-desc "Begin a new post in #{source_dir}/#{posts_dir}"
-task :new_post, :title do |t, args|
-  if args.title
-    title = args.title
-  else
-    title = get_stdin("Enter a title for your post: ")
-  end
-  raise "### Could not find the source directory.\n\n" unless File.directory?(source_dir)
-  mkdir_p "#{source_dir}/#{posts_dir}"
-  filename = "#{source_dir}/#{posts_dir}/#{Time.now.strftime('%Y-%m-%d')}-#{title.to_url}.#{new_post_ext}"
-  if File.exist?(filename)
-    abort("rake aborted!") if ask("#{filename} already exists. Do you want to overwrite?", ['y', 'n']) == 'n'
-  end
-  puts "Creating new post: #{filename}"
+# usage: rake new_post
+desc "Begin a new post."
+task :new_post do |t, args|
+  title = get_stdin("Enter a title for your post: ")
+  filename = task_start(posts_dir, title.to_url, type="new post")
   open(filename, 'w') do |post|
-    post.puts template_sub(IO.read(new_post_template),
+    post.puts template_sub(new_post_template,
                            {'title' => CGI.escapeHTML(title),
                             'date'  => Time.now.strftime('%Y-%m-%d %H:%M:%S %z')})
   end
 end
 
+# usage: rake new_page
+desc "Begin a new page."
+task :new_post do |t, args|
+  title = get_stdin("Enter a title for your post: ")
+  filename = task_start(posts_dir, title.to_url, type="new post")
+  open(filename, 'w') do |page|
+    page.puts template_sub(new_page_template,
+                           {'title' => CGI.escapeHTML(title),
+                            'handle' => get_handle(title),
+                            'date'  => Time.now.strftime('%Y-%m-%d %H:%M:%S %z')})
+  end
+end
+
 # usage: rake categories to generate category index (category/<category>)
-desc "Generate category pages into #{source_dir}/#{category_dir}/"
+desc "Generate category pages into #{$BASE_DIR}/#{category_dir}/"
 task :categories do
-  raise "### Could not find the source directory.\n\n" unless File.directory?(source_dir)
-  mkdir_p "#{source_dir}/#{category_dir}"
   puts "Generating category pages..."
 
   options = Jekyll.configuration({})
   site = Jekyll::Site.new(options)
   site.read_posts('')
   site.categories.sort.each do |category, posts|
-    filename = "#{source_dir}/#{category_dir}/#{category}.html"
-    puts "Creating page: #{filename}"
+    filename = task_start(category_dir, category, type="category index page", check_exists=false, extension='html')
     open(filename, 'w') do |page|
-      page.puts template_sub(IO.read(category_index_template),
+      page.puts template_sub(category_index_template,
                              {'category' => category})
     end
   end
 end
 
 # usage: rake tags to generate tag index (tag/<tag>)
-desc "Generate tag pages into #{source_dir}/#{tag_dir}/"
+desc "Generate tag pages into #{$BASE_DIR}/#{tag_dir}/"
 task :tags do
-  raise "### Could not find the source directory.\n\n" unless File.directory?(source_dir)
-  mkdir_p "#{source_dir}/#{tag_dir}"
   puts "Generating tag pages..."
 
   options = Jekyll.configuration({})
   site = Jekyll::Site.new(options)
   site.read_posts('')
   site.tags.sort.each do |tag, posts|
-    filename = "#{source_dir}/#{tag_dir}/#{tag}.html"
-    puts "Creating page: #{filename}"
+    filename = task_start(tag_dir, tag, type="tag index page", check_exists=false, extension='html')
     open(filename, 'w') do |page|
-      page.puts template_sub(IO.read(tag_index_template),
+      page.puts template_sub(tag_index_template,
                              {'tag' => tag})
     end
   end
 end
 
 # usage: rake dateindex to generate year/month index.
-desc "Generate year and year/month indices in #{source_dir}/#{dateindex_dir}"
+desc "Generate year and year/month indices in #{$BASE_DIR}/#{dateindex_dir}"
 task :dateindex do
-  raise "### Could not find the source directory.\n\n" unless File.directory?(source_dir)
-  mkdir_p "#{source_dir}/#{dateindex_dir}"
   puts "Generating date index pages..."
 
   options = Jekyll.configuration({})
@@ -109,20 +105,16 @@ task :dateindex do
   h = site.posts.group_by { |p| p.date.year }
   h = h.merge(h) { | key, val| val.group_by{ |p| p.date.strftime('%m') } }
   h.each do |year, ppy|
-    mkdir_p "#{source_dir}/#{dateindex_dir}/#{year}"
-    filename="#{source_dir}/#{dateindex_dir}/#{year}.html"
-    puts "Creating page: #{filename}"
+    filename = task_start(dateindex_dir, year, type="year index page", check_exists=false, extension="html")
     open(filename, 'w') do |page|
-      page.puts template_sub(IO.read(year_index_template),
+      page.puts template_sub(year_index_template,
                              {'year' => year})
     end
-
     ppy.each do |month, pp|
-      filename="#{source_dir}/#{dateindex_dir}/#{year}/#{month}.html"
-      puts "Creating page: #{filename}"
       monyear = pp[0].date.strftime('%B %Y')
+      filename = task_start("#{dateindex_dir}/#{year}", month, type="month index page", check_exists=false, extension="html")
       open(filename, 'w') do |page|
-          page.puts template_sub(IO.read(month_index_template),
+          page.puts template_sub(month_index_template,
                                  {'year' => year,
                                   'month' => month,
                                   'monyear' => monyear})
@@ -132,20 +124,17 @@ task :dateindex do
 end
 
 # usage: rake authors to generate author index (author/<author>)
-desc "Generate author pages into #{source_dir}/#{author_dir}/"
+desc "Generate author indices into #{$BASE_DIR}/#{author_dir}/"
 task :authors do
-  raise "### Could not find the source directory.\n\n" unless File.directory?(source_dir)
-  mkdir_p "#{source_dir}/#{author_dir}"
   puts "Generating author pages..."
   config = YAML::load_file(config_yml)
 
   config['authors'].each do |key, authorhash|
     author = authorhash['display_name']
     handle = authorhash['handle'] || get_handle(author)
-    filename = "#{source_dir}/#{author_dir}/#{handle}.html"
-    puts "Creating page: #{filename}"
+    filename = task_start(author_dir, handle, type="author index page", check_exists=false, extension="html")
     open(filename, 'w') do |page|
-      page.puts template_sub(IO.read(author_index_template),
+      page.puts template_sub(author_index_template,
                              {'author' => author,
                               'handle' => handle,
                               'key' => key})
@@ -153,23 +142,22 @@ task :authors do
   end
 end
 
+# --- UPTO
+
 # Makes an rss feed per category (TODO: blogspot does by label...)
 # blogspot does by label, e.g.
 # http://mathematicalcoffee.blogspot.com/feeds/posts/default/-/gnome-shell-extension
-desc "Generate per-category RSS feeds into #{source_dir}/#{feed_dir}/"
+desc "Generate per-category RSS feeds into #{$BASE_DIR}/#{feed_dir}/"
 task :rss do
-  raise "### Could not find the source directory.\n\n" unless File.directory?(source_dir)
-  mkdir_p "#{source_dir}/#{feed_dir}"
   puts "Generating RSS category pages..."
 
   options = Jekyll.configuration({})
   site = Jekyll::Site.new(options)
   site.read_posts('')
   site.categories.sort.each do |category, posts|
-    filename = "#{source_dir}/#{feed_dir}/rss.#{category}.xml"
-    puts "Creating page: #{filename}"
+    filename = task_start(feed_dir, "rss.#{category}", type="RSS feed", check_exists=false, extension="xml")
     open(filename, 'w') do |page|
-      page.puts IO.read(rss_category_template).gsub('%{category}', category)
+      page.puts template_sub(rss_category_template, {'category' => category})
     end
   end
 end
@@ -296,6 +284,19 @@ def ask(message, valid_options)
   answer
 end
 
-def template_sub(string, dict)
-    string.gsub(/%\{([a-zA-Z_0-9]+)\}/) do |m| dict["#{$1}"] end
+def template_sub(template, dict)
+    #string.gsub(/%\{([a-zA-Z_0-9]+)\}/) do |m| dict["#{$1}"] end
+    IO.read("#{$TEMPLATE_DIR}/#{template}").gsub(/%\{([a-zA-Z_0-9]+)\}/) do |m| dict["#{$1}"] end
+end
+
+def task_start(directory, filename, type="new page", check_exists=true, extension=nil)
+  raise "### Could not find the source directory.\n\n" unless File.directory?($BASE_DIR)
+  mkdir_p "#{$BASE_DIR}/#{directory}", :verbose => false
+  ext = extension.nil? ? $PREFFERED_EXT : extension
+  filename = "#{$BASE_DIR}/#{directory}/#{filename}.#{ext}"
+  if check_exists and File.exist?(filename)
+    abort("rake aborted!") if ask("#{filename} already exists. Do you want to overwrite?", ['y', 'n']) == 'n'
+  end
+  puts "Creating #{type}: #{filename}"
+  return filename
 end
