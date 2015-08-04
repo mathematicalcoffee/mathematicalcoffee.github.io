@@ -17,6 +17,7 @@ require "cgi"
 $BASE_DIR       = "." # directory all others are relative to
 $TEMPLATE_DIR   = "_templates"
 posts_dir       = "_posts"
+page_dir        = "."
 $PREFERRED_EXT  = "md"
 category_dir    = "generated/category"
 tag_dir         = "generated/tag"
@@ -49,9 +50,9 @@ end
 
 # usage: rake new_page
 desc "Begin a new page."
-task :new_post do |t, args|
-  title = get_stdin("Enter a title for your post: ")
-  filename = task_start(posts_dir, title.to_url, type="new post")
+task :new_page do |t, args|
+  title = get_stdin("Enter a title for your page: ")
+  filename = task_start(page_dir, title.to_url, type="new post")
   open(filename, 'w') do |page|
     page.puts template_sub(new_page_template,
                            {'title' => CGI.escapeHTML(title),
